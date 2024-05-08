@@ -1,3 +1,38 @@
+// hamburger menu
+const menuToggle = document.querySelector(".menu-toggle input");
+const nav = document.querySelector("nav");
+
+menuToggle.addEventListener("click", function () {
+  nav.classList.toggle("slide");
+});
+
+// const menuToggle = document.querySelector(".menu-toggle input");
+// const navMenu = document.querySelector("nav");
+
+// menuToggle.addEventListener("click", function () {
+//   menuToggle.classList.toggle("slide");
+//   navMenu.classList.toggle("hidden");
+// });
+
+// window.addEventListener("click", function (e) {
+//   if (e.target != menuToggle && e.target != navMenu) {
+//     menuToggle.classList.remove(".menu-toggle input");
+//     navMenu.classList.add("hidden");
+//   }
+// });
+
+// add class when nav scroll
+document.addEventListener("DOMContentLoaded", function () {
+  window.addEventListener("scroll", function () {
+    var nav = document.querySelector("nav");
+    if (window.scrollY > 450) {
+      nav.classList.add("sticky");
+    } else {
+      nav.classList.remove("sticky");
+    }
+  });
+});
+
 // Buka dan baca file JSON
 fetch("dataset-superstore.json")
   .then((response) => response.json())

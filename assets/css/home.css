@@ -1,0 +1,162 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  height: 1200px;
+  overflow-x: hidden;
+}
+
+/* style navbar and hamburger menu for mobile */
+nav {
+  position: fixed;
+  width: 100vw;
+  display: flex;
+  justify-content: space-around;
+  background-color: transparent;
+  z-index: 10;
+  padding: 20px 0;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  width: 40%;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 300px;
+}
+
+nav ul li a {
+  color: black;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.logo {
+  margin-left: 60px;
+  display: flex;
+}
+
+.logo img {
+  width: 50px;
+}
+
+.logo h3 {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 52px;
+  letter-spacing: -2%;
+  margin-left: 10px;
+}
+
+/* add class for change nav then scroll */
+nav.sticky {
+  backdrop-filter: blur(12px);
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+    0 8px 10px -6px rgb(0 0 0 / 0.1);
+  padding: 20px 0;
+  transition: 0.5s ease-in;
+}
+
+/* hamburger menu */
+.menu-toggle {
+  display: flex;
+  flex-direction: column;
+  height: 20px;
+  justify-content: space-between;
+  margin-top: 15px;
+  position: relative;
+}
+
+.menu-toggle input {
+  position: absolute;
+  width: 40px;
+  height: 28px;
+  top: -3px;
+  left: -5px;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* hamburger animation */
+nav .menu-toggle span:nth-child(2) {
+  transform-origin: 0 0;
+}
+nav .menu-toggle span:nth-child(4) {
+  transform-origin: 0 100%;
+}
+nav .menu-toggle input:checked ~ span:nth-child(2) {
+  transform: rotate(45deg) translate(-2px, 0);
+}
+nav .menu-toggle input:checked ~ span:nth-child(4) {
+  transform: rotate(-45deg) translate(-1px, 0);
+}
+nav .menu-toggle input:checked ~ span:nth-child(3) {
+  transform: scale(0);
+  opacity: 0;
+}
+
+/* end style navbar and hamburger menu for mobile */
+
+/* responsive for breakpoints mobile */
+@media screen and (max-width: 576px) {
+  nav ul {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    flex-direction: column;
+    justify-content: space-evenly;
+    transform: translateX(100%);
+    transition: all 1s;
+    opacity: 0;
+  }
+
+  nav ul.slide {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  .menu-toggle {
+    display: flex;
+    margin-right: 50px;
+  }
+
+  .menu-toggle span {
+    display: block;
+    width: 28px;
+    height: 3px;
+    background-color: black;
+  }
+
+  nav.sticky .menu-toggle span {
+    background-color: black;
+  }
+
+  .logo {
+    margin-right: 100px;
+  }
+
+  .logo img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .logo h3 {
+    font-size: 24px;
+  }
+}
