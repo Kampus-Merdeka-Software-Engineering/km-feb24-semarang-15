@@ -25,7 +25,7 @@ menuToggle.addEventListener("click", function () {
 document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("scroll", function () {
     var nav = document.querySelector("nav");
-    if (window.scrollY > 450) {
+    if (window.scrollY > 550) {
       nav.classList.add("sticky");
     } else {
       nav.classList.remove("sticky");
@@ -48,3 +48,38 @@ fetch("dataset-superstore.json")
     document.getElementById("profitValue_2").innerText = profitValue;
   })
   .catch((error) => console.error("Error reading JSON:", error));
+
+// slide
+var swiper = new Swiper(".slide-content", {
+  slidesPerView: 3,
+  spaceBetween: 25,
+  centerSlide: "true",
+  fade: "true",
+  loop: true,
+  grabCursor: "true",
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+    dynamicBullets: true,
+  },
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  autoplay: {
+    delay: 2500,
+    disableOnInteraction: false,
+  },
+
+  breakpoints: {
+    0: {
+      slidesPerView: 1,
+    },
+    520: {
+      slidesPerView: 2,
+    },
+    950: {
+      slidesPerView: 3,
+    },
+  },
+});
