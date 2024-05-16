@@ -14,6 +14,7 @@ body {
   font-family: "Poppins", sans-serif;
   height: 1500px;
   overflow-x: hidden;
+  background-color: #f1f4c8;
 }
 
 /* style navbar and hamburger menu for mobile */
@@ -180,6 +181,7 @@ nav .menu-toggle input:checked ~ span:nth-child(3) {
   margin: 20px auto;
   font-size: 12px;
   font-weight: 500;
+  animation: bounce 2s infinite;
 }
 
 .button-home:hover {
@@ -203,28 +205,58 @@ nav .menu-toggle input:checked ~ span:nth-child(3) {
   align-items: center;
   gap: 50px;
 }
-.box__card__mentor {
+.box__card__mentor,
+.box__card__member {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   background-color: #a19a4c;
-  width: max-content;
-  height: fit-content;
   padding: 30px;
-  border-radius: 12px;
+  width: 300px;
+  border-radius: 16px;
   box-shadow: -9px -9px 18px -3px rgba(0, 0, 0, 0.25);
   -webkit-box-shadow: -9px -9px 18px -3px rgba(0, 0, 0, 0.25);
   -moz-box-shadow: -9px -9px 18px -3px rgba(0, 0, 0, 0.25);
   transition: transform 0.8s ease;
 }
 
-/* .box__card__mentor:hover {
+.box__card__mentor:hover {
   background-color: #a19a4cc7;
-  transform: scale(1.05);
-} */
+  transform: translateY(20px);
+}
+
+.box__card__member {
+  z-index: 10;
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(20px);
+  }
+  60% {
+    transform: translateY(10px);
+  }
+}
 
 .box__card__mentor img {
-  width: 250px;
-  height: 250px;
+  width: 180px;
+  height: 180px;
   margin-bottom: 10px;
   object-fit: cover;
+}
+
+.box__card__member img {
+  width: 180px;
+  height: 180px;
+  margin: 20px 0;
 }
 
 .profile__data__mentor {
@@ -235,25 +267,19 @@ nav .menu-toggle input:checked ~ span:nth-child(3) {
   gap: 5px;
 }
 
-.profile__data__mentor p {
-  font-weight: 500;
-  color: black;
+.name__mentor {
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: 10px;
 }
 
-.box__card__member {
-  background-color: #a19a4c;
-
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: -9px -9px 18px -3px rgba(0, 0, 0, 0.25);
-  -webkit-box-shadow: -9px -9px 18px -3px rgba(0, 0, 0, 0.25);
-  -moz-box-shadow: -9px -9px 18px -3px rgba(0, 0, 0, 0.25);
-  transition: transform 0.8s ease;
+.as_role {
+  font-weight: 300;
+  font-size: 14px;
+  margin-bottom: 20px;
 }
 
 .box__card__member img {
-  margin-left: 35px;
-  margin-bottom: 20px;
   width: 200px;
   object-fit: cover;
 }
@@ -281,18 +307,67 @@ nav .menu-toggle input:checked ~ span:nth-child(3) {
 
 .fa-brands {
   font-size: 30px;
-  color: black;
+  color: #a19a4c;
   border-radius: 10px;
   margin: 10px;
 }
-.name {
+
+.fa-mentor {
+  color: black;
+}
+.name__member {
   font-size: 16px;
   font-weight: 600;
 }
 
 .universitas,
-.role {
+.role__member {
   font-size: 14px;
+  text-align: center;
+}
+.box__card__member__coba {
+  width: 320px; /* Adjust the width as needed */
+  border-radius: 10px; /* Optional: Adds rounded corners */
+  overflow: hidden; /* Ensures content does not overflow */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+  transition: transform 0.8s ease;
+}
+
+.box__card__member__coba:hover {
+  background-color: #a19a4cc7;
+  transform: translateY(20px);
+}
+
+.member__image__content {
+  background-color: #a19a4c;
+  padding-top: 20px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.member__image__content__overlay {
+  display: none; /* Adjust if overlay functionality is needed */
+}
+
+.member__card-image {
+  margin-top: 20px;
+}
+
+.member__card-img {
+  width: 200px;
+  height: 195px;
+  border-radius: 50%;
+}
+
+.member__card__content {
+  background-color: #f5f5f5; /* Green background color */
+  color: black; /* White text color */
+  padding: 20px;
+  text-align: center;
+}
+
+.member__card__content p {
+  margin: 5px 0;
 }
 
 /* carousel */
