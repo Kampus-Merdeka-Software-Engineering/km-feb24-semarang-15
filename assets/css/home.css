@@ -49,10 +49,11 @@ nav ul li a {
 .logo {
   margin-left: 60px;
   display: flex;
+  width: 70px;
 }
 
 .logo img {
-  width: 50px;
+  width: 70px;
 }
 
 .logo h3 {
