@@ -473,8 +473,12 @@ nav .menu-toggle input:checked ~ span:nth-child(3) {
   margin: 10px;
 }
 
+.sosmed-linkedin {
+  color: white;
+}
+
 .fa-mentor {
-  color: black;
+  color: white;
 }
 
 .name__member {
