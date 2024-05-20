@@ -1,9 +1,9 @@
 // hamburger menu
 const menuToggle = document.querySelector(".menu-toggle input");
-const nav = document.querySelector("nav");
+const navSlide = document.querySelector("nav");
 
 menuToggle.addEventListener("click", function () {
-  nav.classList.toggle("slide");
+  navSlide.classList.toggle("slide");
 });
 
 // const menuToggle = document.querySelector(".menu-toggle input");
@@ -22,16 +22,16 @@ menuToggle.addEventListener("click", function () {
 // });
 
 // add class when nav scroll
-document.addEventListener("DOMContentLoaded", function () {
-  window.addEventListener("scroll", function () {
-    var nav = document.querySelector("nav");
-    if (window.scrollY > 550) {
-      nav.classList.add("sticky");
-    } else {
-      nav.classList.remove("sticky");
-    }
-  });
-});
+// document.addEventListener("DOMContentLoaded", function () {
+//   window.addEventListener("scroll", function () {
+//     var nav = document.querySelector("nav");
+//     if (window.scrollY > 550) {
+//       nav.classList.add("sticky");
+//     } else {
+//       nav.classList.remove("sticky");
+//     }
+//   });
+// });
 
 // Buka dan baca file JSON
 fetch("dataset-superstore.json")
@@ -50,36 +50,30 @@ fetch("dataset-superstore.json")
   .catch((error) => console.error("Error reading JSON:", error));
 
 // slide
-var swiper = new Swiper(".slide-content", {
-  slidesPerView: 3,
-  spaceBetween: 25,
-  centerSlide: "true",
-  fade: "true",
-  loop: true,
-  grabCursor: "true",
+const swiperEl = document.querySelector("swiper-container");
+Object.assign(swiperEl, {
+  slidesPerView: 1,
+  spaceBetween: 10,
   pagination: {
-    el: ".swiper-pagination",
     clickable: true,
-    dynamicBullets: true,
-  },
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
   },
   autoplay: {
     delay: 2500,
     disableOnInteraction: false,
   },
-
   breakpoints: {
-    0: {
-      slidesPerView: 1,
-    },
-    520: {
+    640: {
       slidesPerView: 2,
+      spaceBetween: 20,
     },
-    950: {
+    768: {
       slidesPerView: 3,
+      spaceBetween: 40,
+    },
+    1024: {
+      slidesPerView: 4,
+      spaceBetween: 30,
     },
   },
 });
+swiperEl.initialize();
