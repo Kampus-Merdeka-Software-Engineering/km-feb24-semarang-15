@@ -76,7 +76,7 @@ nav.scrolled {
   border: none;
 }
 nav .logo {
-  margin-left: 60px;
+  margin-left: 20px;
   display: flex;
 }
 nav .logo img {
@@ -473,8 +473,12 @@ nav .menu-toggle input:checked ~ span:nth-child(3) {
   margin: 10px;
 }
 
+.sosmed-linkedin {
+  color: white;
+}
+
 .fa-mentor {
-  color: black;
+  color: white;
 }
 
 .name__member {
@@ -503,9 +507,10 @@ swiper-slide {
   align-items: center;
 }
 
-.swiper-pagination {
-  position: relative !important;
-}
+/* .swiper-pagination {
+  position: absolute !important;
+  top: 10px;
+} */
 /* end carousel */
 
 /* end section our team */
@@ -691,6 +696,10 @@ swiper-slide {
   .mentor {
     display: flex;
     flex-direction: column;
+  }
+
+  .card__analytics-title {
+    font-size: 16px;
   }
 
   /* style about for mobile */
