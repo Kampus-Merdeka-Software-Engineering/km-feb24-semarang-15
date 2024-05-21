@@ -72,7 +72,7 @@ Object.assign(swiperEl, {
     },
     1024: {
       slidesPerView: 4,
-      spaceBetween: 30,
+      spaceBetween: 40,
     },
   },
 });
