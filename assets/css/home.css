@@ -378,7 +378,9 @@ nav .menu-toggle input:checked ~ span:nth-child(3) {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.8s ease;
 }
-
+.box__card__member {
+  margin-bottom: 30px;
+}
 .box__card__mentor:hover {
   background-color: #a19a4cc7;
   transform: translateY(20px);
@@ -423,6 +425,10 @@ nav .menu-toggle input:checked ~ span:nth-child(3) {
   color: black;
   padding: 20px;
   text-align: center;
+}
+
+.member__card__content {
+  height: 225px;
 }
 
 .mentor__card__content p,
@@ -492,19 +498,49 @@ nav .menu-toggle input:checked ~ span:nth-child(3) {
   text-align: center;
 }
 
+.differet__position-sosmed {
+  margin-top: 20px;
+  display: inline-block;
+}
 /* carousel */
 swiper-container {
+  position: relative;
   width: 100%;
   height: 100%;
 }
 
 swiper-slide {
-  text-align: center;
-  font-size: 18px;
   background: #f1f4c8;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  background-color: #a19a4c;
+  border-radius: 50%;
+  border-top: 2px solid white;
+  border-bottom: 2px solid #a19a4c;
+}
+
+.swiper-button-next {
+  top: -350px;
+  right: 70px;
+  padding: 20px;
+}
+
+.swiper-button-prev {
+  top: -350px;
+  left: 70px;
+  padding: 20px;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 20px;
+  font-family: 600;
+  color: white;
 }
 
 /* .swiper-pagination {
@@ -700,6 +736,20 @@ swiper-slide {
 
   .card__analytics-title {
     font-size: 16px;
+  }
+
+  .swiper-button-next {
+    display: none;
+    /* top: -300px;
+    right: 10px;
+    padding: 20px; */
+  }
+
+  .swiper-button-prev {
+    display: none;
+    /* top: -300px;
+    left: 10px;
+    padding: 20px; */
   }
 
   /* style about for mobile */

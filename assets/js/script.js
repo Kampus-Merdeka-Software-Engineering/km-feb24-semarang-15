@@ -56,11 +56,17 @@ Object.assign(swiperEl, {
   spaceBetween: 10,
   pagination: {
     clickable: true,
+    dynamicBullets: true,
   },
   autoplay: {
     delay: 2500,
     disableOnInteraction: false,
   },
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+
   breakpoints: {
     640: {
       slidesPerView: 2,
@@ -72,7 +78,7 @@ Object.assign(swiperEl, {
     },
     1024: {
       slidesPerView: 4,
-      spaceBetween: 40,
+      spaceBetween: 30,
     },
   },
 });
