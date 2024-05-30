@@ -543,10 +543,6 @@ swiper-slide {
   color: white;
 }
 
-/* .swiper-pagination {
-  position: absolute !important;
-  top: 10px;
-} */
 /* end carousel */
 
 /* end section our team */
@@ -567,7 +563,6 @@ swiper-slide {
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
-  /* max-width: 300px; */
 }
 
 .fa-chart-simple {
@@ -650,6 +645,23 @@ swiper-slide {
   transform: scale(1.1);
 }
 /* end style about */
+
+/* style footer */
+footer {
+  padding: 1rem 6rem;
+}
+
+.line-footer {
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.title__footer {
+  text-align: center;
+  padding: 10px;
+  font-size: 14px;
+}
+/* end style footer */
 
 /* responsive for breakpoints mobile */
 @media screen and (max-width: 576px) {
