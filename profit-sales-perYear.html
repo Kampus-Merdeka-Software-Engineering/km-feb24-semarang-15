@@ -3,11 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Profit Per Segment</title>
-
+    <title>Profit And Sales PerCategory</title>
     <!-- CDN chart js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation"></script>
 
     <!-- link css -->
     <link rel="stylesheet" href="assets/css/styles.css" />
@@ -23,50 +22,6 @@
     ></script>
   </head>
   <body>
-    <!-- <nav class="sidebar close-sidebar">
-      <header>
-        <div class="header-logo">
-          <span class="image">
-            <img src="assets/img/TEAM 15.png" alt="logo" />
-          </span>
-          <div class="text logo-text">
-            <span class="name">Superstore</span>
-          </div>
-        </div>
-        <i class="bx bx-chevron-right toggle"></i>
-      </header>
-
-      <div class="nav-menu">
-        <div class="menu">
-          <ul class="menu-links">
-            <li class="nav-link">
-              <a href="index.html">
-                <i class="bx bx-home-alt icon"></i>
-                <span class="text nav-text">Dashboard</span>
-              </a>
-            </li>
-            <li class="nav-link">
-              <a href="profile.html">
-                <i class="bx bx-user-circle icon"></i>
-                <span class="text nav-text">Profile</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <div class="bottom-content">
-          <ul>
-            <li class="mode toggle-switch">
-              <div class="sun-moon">
-                <i class="bx bx-moon icon moon"></i>
-                <i class="bx bx-sun icon sun"></i>
-              </div>
-              <span class="mode-text text">Dark mode</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav> -->
     <nav class="sidebar close">
       <header>
         <div class="image-text">
@@ -75,7 +30,7 @@
           </span>
           <div class="text">
             <span class="name">Superstore</span>
-            <span class="profession">Dashboard</span>
+            <!-- <span class="profession">Sales Persegment</span> -->
           </div>
         </div>
         <i class="bx bx-chevron-right toggle"></i>
@@ -84,7 +39,7 @@
         <div class="menu">
           <ul class="menu-links">
             <li class="nav-links">
-              <a href="home.html">
+              <a href="index.html">
                 <i class="bx bx-home-alt icon"></i>
                 <span class="text nav-text">Dashboard</span>
               </a>
@@ -98,7 +53,7 @@
             <li class="nav-links">
               <a href="us.html">
                 <i class="bx bxs-user icon"></i>
-                <span class="text nav-text">About Us</span>
+                <span class="text nav-text">Reasearch Question</span>
               </a>
             </li>
           </ul>
@@ -118,19 +73,17 @@
         </div>
       </div>
     </nav>
-
-    <!-- bagian hamburger -->
+    <!-- hamburger menu -->
     <div class="hamburger">
       <div id="btn" class="nav-hamburger">
         <i class="bx bx-x" id="btn"></i>
         <i class="bx bx-menu" id="btn"></i>
       </div>
     </div>
-
     <main>
       <section id="header__title">
         <div class="title">
-          <h3>Profit Persegment</h3>
+          <h3>Profit and Sales Per Category</h3>
         </div>
         <div class="filter">
           <div class="dropdown-content">
@@ -178,10 +131,10 @@
         </div>
       </section>
       <section id="content">
-        <div class="chart-container">
-          <div class="chart">
-            <h3>Profit Per Segment</h3>
-            <canvas id="myChart"></canvas>
+        <div class="chart-container__profit__sales__year">
+          <div class="chart__profit__sales__year">
+            <h3>Profit and Sales Per Category</h3>
+            <canvas id="myChart" width="295px" height="264px"></canvas>
           </div>
         </div>
         <div class="content__sales">
@@ -204,6 +157,7 @@
         </div>
       </section>
     </main>
+
     <footer>
       <div class="line-footer"></div>
       <p class="title__footer">
@@ -213,7 +167,7 @@
     </footer>
   </body>
 
-  <script src="assets/js/profitPerSegment.js"></script>
+  <script src="assets/js/profit-sales-perYear.js"></script>
   <script src="assets/js/navbar.js"></script>
 </html>
 

@@ -334,6 +334,22 @@ body.dark .home .text {
   color: #fff;
 }
 
+/* mode dark */
+body.dark .title,
+body.dark .content__sales,
+footer {
+  color: var(--text-color);
+}
+
+body.dark .hamburger {
+  background-color: var(--body-color);
+}
+
+body.dark .nav-hamburger {
+  background-color: var(--body-color);
+  backdrop-filter: blur(0);
+  box-shadow: none;
+}
 /* end sidebar */
 
 /* style content */
@@ -444,6 +460,10 @@ option {
   margin: 20px 0;
 }
 
+.content__sales p {
+  text-align: justify;
+}
+
 /* style footer */
 footer {
   padding: 1rem 2rem;
@@ -456,6 +476,10 @@ footer {
   background-color: rgba(0, 0, 0, 0.2);
 }
 
+body.dark .line-footer {
+  background-color: var(--text-color);
+}
+
 .title__footer {
   text-align: center;
   padding: 10px;
@@ -463,11 +487,65 @@ footer {
 }
 /* end style footer */
 
+/* here responsive for breakpoint tablets */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .sidebar {
+    transition: left 0.3s ease;
+  }
+
+  .sidebar.close {
+    left: -200px;
+  }
+
+  .sidebar.close .image {
+    display: none;
+  }
+
+  .sidebar header .toggle {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  #header__title {
+    padding: 6rem 3rem 0 3rem;
+  }
+
+  #count,
+  #chart,
+  #content {
+    padding: 0 3rem;
+  }
+
+  .chart-container {
+    width: 100%;
+    margin: 50px 0;
+  }
+
+  .cards-container {
+    margin-top: 30px;
+  }
+
+  footer {
+    padding: 3rem 3rem 1rem 3rem;
+  }
+
+  .title__footer {
+    margin: 10px 0;
+  }
+
+  .line-footer {
+    width: 100%;
+  }
+}
+
+/* end responsive for tablets */
+
 /* here responsive for breakpoints mobile */
 @media screen and (max-width: 576px) {
-  main {
-    padding: 6rem 2rem;
-  }
   .sidebar {
     transition: left 0.3s ease;
   }
@@ -489,6 +567,25 @@ footer {
     justify-content: flex-end;
   }
   #header__title {
+    padding: 6rem 2rem 0 2rem;
+  }
+
+  #count,
+  #chart,
+  #content {
+    padding: 0 2rem;
+  }
+
+  footer {
+    padding: 2rem 2rem 0 2rem;
+    margin-top: 20px;
+  }
+
+  .title__footer {
+    margin: 10px 0;
+  }
+
+  #header__title {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -507,7 +604,7 @@ footer {
   select {
     background-color: #fff;
     border: 1px #a19a4c solid;
-    width: 160px;
+    width: 170px;
     padding: 12px;
     border-radius: 14px;
   }
@@ -515,12 +612,6 @@ footer {
   .title h3 {
     text-align: left;
     font-size: 21px;
-  }
-
-  #header__title,
-  #count,
-  #content {
-    padding: 0;
   }
 
   .cards-container {
@@ -550,10 +641,6 @@ footer {
 
   .chart__profit__sales {
     width: 1000px;
-  }
-
-  footer {
-    padding: 2rem;
   }
 
   .line-footer {
