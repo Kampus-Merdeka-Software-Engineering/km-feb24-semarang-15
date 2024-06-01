@@ -283,7 +283,7 @@ nav .menu-toggle input:checked ~ span:nth-child(3) {
 }
 
 #hero {
-  background-image: url(../img/home.jpg);
+  background-image: url(../img/home.webp);
   background-size: cover;
   background-position: top center;
   z-index: 1;
