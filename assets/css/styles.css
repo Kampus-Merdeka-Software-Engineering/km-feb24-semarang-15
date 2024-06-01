@@ -319,6 +319,7 @@ body.dark .home .text {
     0 8px 10px -6px rgb(0 0 0 / 0.1);
   padding: 10px 5%;
   margin-bottom: 10px;
+  z-index: 10;
 }
 .nav-hamburger {
   border-radius: 5px;
@@ -455,9 +456,32 @@ option {
   width: 600px;
 }
 
+.geo_chart {
+  display: flex;
+  gap: 10px;
+}
+
+.geo__chart__sales,
+.geo__chart__profit {
+  background-color: #fff;
+  width: 100%;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.chart__map__sales,
+.chart__map__profit {
+  width: 550px;
+}
+
 .chart h3 {
   text-align: center;
   margin: 20px 0;
+}
+
+.conten__sales__state,
+.conten__profit__state {
+  margin: 30px 0;
 }
 
 .content__sales p {
@@ -641,6 +665,19 @@ body.dark .line-footer {
 
   .chart__profit__sales {
     width: 1000px;
+  }
+
+  .geo_chart {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .chart__map__sales,
+  .chart__map__profit {
+    width: 80vw;
+    z-index: -1;
   }
 
   .line-footer {

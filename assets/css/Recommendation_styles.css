@@ -309,6 +309,30 @@ body.dark .home .text {
   margin-bottom: 20px;
 }
 
+body.dark h1,
+footer {
+  color: var(--text-color);
+}
+
+body.dark .line-footer {
+  background-color: var(--text-color);
+}
+
+body.dark .line__title_conclusion,
+body.dark .line__title_recommendation {
+  background-color: #f1f4c8;
+}
+
+body.dark .hamburger {
+  background-color: var(--body-color);
+}
+
+body.dark .nav-hamburger {
+  background-color: var(--body-color);
+  backdrop-filter: blur(0);
+  box-shadow: none;
+}
+
 /* ========== Hamburger Menu ========== */
 .hamburger {
   width: 100%;
@@ -335,115 +359,38 @@ body.dark .home .text {
 }
 
 /* end sidebar */
-
-/* style content */
-#header__title {
-  padding: 2rem 8rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.title h1 {
-  font-size: 24px;
-}
-
-.filter {
-  display: flex;
-  gap: 20px;
-}
-
-select {
-  background-color: #fff;
-  border: 1px #a19a4c solid;
-  width: 200px;
-  padding: 12px;
-  border-radius: 14px;
-}
-
-select:focus {
-  outline: none;
-}
-
-option {
-  outline: none;
-}
-
-#count,
-#content {
+main {
   padding: 2rem 8rem;
 }
 
-.cards-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
+.line__title_conclusion {
+  width: 100px;
+  height: 4px;
+  background-color: #a19a4c;
+  border-radius: 2px;
 }
 
-.card {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
+.line__title_recommendation {
+  width: 150px;
+  height: 4px;
+  background-color: #a19a4c;
+  border-radius: 2px;
+}
+
+.content {
   background-color: #fff;
-  width: 400px;
-  padding: 30px;
-  border-radius: 20px;
-  border: 1px #a19a4c solid;
-}
-
-.sales__logo img {
-  width: 50px;
-}
-
-.sales__title {
-  margin-left: 20px;
-  text-align: center;
-}
-
-.sales__title h3 {
-  font-size: 16px;
-  font-weight: 500;
-}
-
-.sales__title p {
-  font-size: 24px;
-  font-weight: 600;
-  margin-top: 5px;
-}
-
-.container_recommendation,
-.Recommendation_container {
-  background-color: #fff;
-  padding: 8px;
-  border-radius: 15px;
-  display: flex;
-  justify-content: left;
-  align-items: center;
-  margin: 0 auto;
-}
-
-.container_recommendation {
-  width: 90%;
-}
-
-.Recommendation_container {
-  width: 90%;
-}
-
-.chart {
-  width: 380px;
-}
-
-.container_recommendation {
-  width: 700px;
-}
-
-.chart h1 {
-  text-align: center;
+  padding: 40px;
   margin: 20px 0;
+  border-radius: 10px;
 }
 
+.content p {
+  text-align: justify;
+}
+
+#conclusion h1 {
+  margin-top: 50px;
+}
 /* style footer */
 footer {
   padding: 1rem 2rem;
@@ -488,70 +435,17 @@ footer {
     display: flex;
     justify-content: flex-end;
   }
-  #header__title {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 20px;
-  }
 
-  .filter {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin: 10px auto;
-  }
-
-  select {
-    background-color: #fff;
-    border: 1px #a19a4c solid;
-    width: 160px;
-    padding: 12px;
-    border-radius: 14px;
-  }
-
-  .title h1 {
-    text-align: left;
-    font-size: 21px;
-  }
-
-  #header__title,
-  #count,
-  #content {
+  main {
     padding: 0;
   }
 
-  .cards-container {
-    display: flex;
-    flex-direction: column;
-    margin-top: 20px;
+  #recommendation {
+    padding: 6rem 1.5rem 0 1.5rem;
   }
-
-  .card {
-    display: flex;
-    width: 340px;
+  #conclusion {
+    padding: 0 1.5rem;
   }
-
-  .chart-container {
-    width: 100%;
-    margin: 50px 0;
-  }
-
-  .Recommendation_container {
-    width: 100%;
-    margin: 50px 0;
-  }
-
-  .chart {
-    width: 300px;
-  }
-
-  .Recommendation_container {
-    width: 1000px;
-  }
-
   footer {
     padding: 2rem;
   }

@@ -12,6 +12,8 @@
     <!-- link css -->
     <link rel="stylesheet" href="assets/css/styles.css" />
     <!-- <link rel="stylesheet" href="assets/css/salesPerSegment.css" /> -->
+
+    <!-- boxicon -->
     <link
       href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
       rel="stylesheet"
@@ -23,50 +25,6 @@
     ></script>
   </head>
   <body>
-    <!-- <nav class="sidebar close-sidebar">
-      <header>
-        <div class="header-logo">
-          <span class="image">
-            <img src="assets/img/TEAM 15.png" alt="logo" />
-          </span>
-          <div class="text logo-text">
-            <span class="name">Superstore</span>
-          </div>
-        </div>
-        <i class="bx bx-chevron-right toggle"></i>
-      </header>
-
-      <div class="nav-menu">
-        <div class="menu">
-          <ul class="menu-links">
-            <li class="nav-link">
-              <a href="index.html">
-                <i class="bx bx-home-alt icon"></i>
-                <span class="text nav-text">Dashboard</span>
-              </a>
-            </li>
-            <li class="nav-link">
-              <a href="profile.html">
-                <i class="bx bx-user-circle icon"></i>
-                <span class="text nav-text">Profile</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <div class="bottom-content">
-          <ul>
-            <li class="mode toggle-switch">
-              <div class="sun-moon">
-                <i class="bx bx-moon icon moon"></i>
-                <i class="bx bx-sun icon sun"></i>
-              </div>
-              <span class="mode-text text">Dark mode</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav> -->
     <nav class="sidebar close">
       <header>
         <div class="image-text">
@@ -86,25 +44,27 @@
             <li class="nav-links">
               <a href="home.html">
                 <i class="bx bx-home-alt icon"></i>
-                <span class="text nav-text">Dashboard</span>
+                <span class="text nav-text">Home</span>
               </a>
             </li>
             <li class="nav-links">
-              <a href="analytics.html">
+              <a href="profitPerSegment.html">
                 <i class="bx bx-pie-chart-alt icon"></i>
                 <span class="text nav-text">Analytics</span>
               </a>
             </li>
             <li class="nav-links">
               <a href="us.html">
-                <i class="bx bxs-user icon"></i>
-                <span class="text nav-text">About Us</span>
+                <i class="bx bx-search-alt-2 icon"></i>
+                <span class="text nav-text">Reasearch <br />Question</span>
               </a>
             </li>
             <li class="nav-links">
               <a href="recommendation&Conclussion.html">
-                <i class="bx bxs-user icon"></i>
-                <span class="text nav-text">Recommendation&Conclussion</span>
+                <i class="bx bx-check-circle icon"></i>
+                <span class="text nav-text"
+                  >Recommendation <br />and Conclussion</span
+                >
               </a>
             </li>
           </ul>
@@ -174,7 +134,7 @@
           </div>
           <div class="card">
             <div class="sales__title">
-              <h3>Total Sales</h3>
+              <h3>Total Profit</h3>
               <p id="totalProfit"></p>
             </div>
             <div class="sales__logo">
@@ -217,10 +177,15 @@
         Semarang. All Rights Reserved.
       </p>
     </footer>
+    <script src="assets/js/profitPerSegment.js"></script>
+    <script src="assets/js/navbar.js"></script>
+    <!-- script untuk  menyimpan URL halaman tersebut di LocalStorage ketika halaman dimuat.-->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        localStorage.setItem("lastAnalyticsPage", window.location.href);
+      });
+    </script>
   </body>
-
-  <script src="assets/js/profitPerSegment.js"></script>
-  <script src="assets/js/navbar.js"></script>
 </html>
 
 <!-- #7f8453 #ffbf44 #94b721 -->

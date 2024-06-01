@@ -52,21 +52,29 @@
         <div class="menu">
           <ul class="menu-links">
             <li class="nav-links">
-              <a href="index.html">
+              <a href="home.html">
                 <i class="bx bx-home-alt icon"></i>
-                <span class="text nav-text">Dashboard</span>
+                <span class="text nav-text">Home</span>
               </a>
             </li>
             <li class="nav-links">
-              <a href="analytics.html">
+              <a href="profitPerSegment.html">
                 <i class="bx bx-pie-chart-alt icon"></i>
                 <span class="text nav-text">Analytics</span>
               </a>
             </li>
             <li class="nav-links">
               <a href="us.html">
-                <i class="bx bxs-user icon"></i>
-                <span class="text nav-text">Reasearch Question</span>
+                <i class="bx bx-search-alt-2 icon"></i>
+                <span class="text nav-text">Reasearch <br />Question</span>
+              </a>
+            </li>
+            <li class="nav-links">
+              <a href="recommendation&Conclussion.html">
+                <i class="bx bx-check-circle icon"></i>
+                <span class="text nav-text"
+                  >Recommendation <br />and Conclussion</span
+                >
               </a>
             </li>
           </ul>
@@ -193,5 +201,12 @@
 
     <script src="assets/js/navbar.js"></script>
     <script src="assets/js/profit-sales-perRegion-category.js"></script>
+
+    <!-- script untuk  menyimpan URL halaman tersebut di LocalStorage ketika halaman dimuat.-->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        localStorage.setItem("lastAnalyticsPage", window.location.href);
+      });
+    </script>
   </body>
 </html>
