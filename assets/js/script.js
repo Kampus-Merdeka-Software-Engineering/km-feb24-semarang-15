@@ -1,25 +1,25 @@
 // hamburger menu
-const menuToggle = document.querySelector(".menu-toggle input");
-const navSlide = document.querySelector("nav");
-
-menuToggle.addEventListener("click", function () {
-  navSlide.classList.toggle("slide");
-});
-
 // const menuToggle = document.querySelector(".menu-toggle input");
-// const navMenu = document.querySelector("nav");
+// const navSlide = document.querySelector("nav");
 
 // menuToggle.addEventListener("click", function () {
-//   menuToggle.classList.toggle("slide");
-//   navMenu.classList.toggle("hidden");
+//   navSlide.classList.toggle("slide");
 // });
 
-// window.addEventListener("click", function (e) {
-//   if (e.target != menuToggle && e.target != navMenu) {
-//     menuToggle.classList.remove(".menu-toggle input");
-//     navMenu.classList.add("hidden");
-//   }
-// });
+const menuToggle = document.querySelector(".menu-toggle input");
+const navMenu = document.querySelector("nav");
+
+menuToggle.addEventListener("click", function () {
+  menuToggle.classList.toggle("slide");
+  navMenu.classList.toggle("hidden");
+});
+
+window.addEventListener("click", function (e) {
+  if (e.target != menuToggle && e.target != navMenu) {
+    menuToggle.classList.remove(".menu-toggle input");
+    navMenu.classList.add("hidden");
+  }
+});
 
 // add class when nav scroll
 // document.addEventListener("DOMContentLoaded", function () {
@@ -54,21 +54,6 @@ menuToggle.addEventListener("click", function () {
 //       return [];
 //     });
 // };
-
-fetch("SUPERSTORE-TEAM15.json")
-  .then((response) => response.json())
-  .then((data) => {
-    // Ambil nilai yang Anda butuhkan dari file JSON
-    const salesValue = data[0].Sales; // Mengambil nilai Sales dari data pertama
-    const profitValue = data[1].Profit; // Mengambil nilai Profit dari data kedua
-
-    // Perbarui nilai tag <p> dengan nilai yang diperoleh
-    document.getElementById("salesValue").innerText = salesValue;
-    document.getElementById("profitValue").innerText = profitValue;
-    document.getElementById("salesValue_1").innerText = salesValue;
-    document.getElementById("profitValue_2").innerText = profitValue;
-  })
-  .catch((error) => console.error("Error reading JSON:", error));
 
 // slide
 const swiperEl = document.querySelector("swiper-container");

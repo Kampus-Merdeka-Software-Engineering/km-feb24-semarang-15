@@ -565,8 +565,8 @@ swiper-slide {
   text-align: center;
 }
 
-.fa-chart-simple {
-  font-size: 32px;
+.logo-card {
+  width: 50px;
 }
 .card__analytics-title {
   font-size: 18px;
@@ -738,7 +738,8 @@ footer {
   /* style our team for mobile */
   #analytics,
   #our_team,
-  #about-us {
+  #about-us,
+  footer {
     padding: 3rem 2rem;
   }
   .mentor {
@@ -751,17 +752,11 @@ footer {
   }
 
   .swiper-button-next {
-    display: none;
-    /* top: -300px;
-    right: 10px;
-    padding: 20px; */
+    display: none;/
   }
 
   .swiper-button-prev {
     display: none;
-    /* top: -300px;
-    left: 10px;
-    padding: 20px; */
   }
 
   /* style about for mobile */
@@ -791,6 +786,8 @@ footer {
   .read-more {
     width: 50%;
   }
+
+
 
   @keyframes zoomIn {
     0% {
