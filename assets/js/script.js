@@ -6,20 +6,20 @@
 //   navSlide.classList.toggle("slide");
 // });
 
-const menuToggle = document.querySelector(".menu-toggle input");
-const navMenu = document.querySelector("nav");
+// const menuToggle = document.querySelector(".menu-toggle input");
+// const navMenu = document.querySelector("nav");
 
-menuToggle.addEventListener("click", function () {
-  menuToggle.classList.toggle("slide");
-  navMenu.classList.toggle("hidden");
-});
+// menuToggle.addEventListener("click", function () {
+//   menuToggle.classList.toggle("slide");
+//   navMenu.classList.toggle("hidden");
+// });
 
-window.addEventListener("click", function (e) {
-  if (e.target != menuToggle && e.target != navMenu) {
-    menuToggle.classList.remove(".menu-toggle input");
-    navMenu.classList.add("hidden");
-  }
-});
+// window.addEventListener("click", function (e) {
+//   if (e.target != menuToggle && e.target != navMenu) {
+//     menuToggle.classList.remove(".menu-toggle input");
+//     navMenu.classList.add("hidden");
+//   }
+// });
 
 // add class when nav scroll
 // document.addEventListener("DOMContentLoaded", function () {

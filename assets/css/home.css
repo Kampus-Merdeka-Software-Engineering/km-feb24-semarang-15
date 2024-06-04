@@ -253,7 +253,7 @@ nav.scrolled ul li a {
 }
 
 /* hamburger animation */
-nav .menu-toggle span:nth-child(2) {
+/* nav .menu-toggle span:nth-child(2) {
   transform-origin: 0 0;
 }
 nav .menu-toggle span:nth-child(4) {
@@ -268,7 +268,7 @@ nav .menu-toggle input:checked ~ span:nth-child(4) {
 nav .menu-toggle input:checked ~ span:nth-child(3) {
   transform: scale(0);
   opacity: 0;
-}
+} */
 
 /* end style navbar and hamburger menu for mobile */
 
