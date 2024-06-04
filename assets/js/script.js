@@ -55,6 +55,59 @@
 //     });
 // };
 
+// document.addEventListener("DOMContentLoaded", function () {
+//   const hamburger = document.querySelector(".hamburger");
+//   const navLinks = document.querySelector(".nav-links");
+
+//   hamburger.addEventListener("click", function () {
+//     navLinks.classList.toggle("show");
+
+//     const icon = hamburger.querySelector("i");
+//     if (icon.classList.contains("fa-bars")) {
+//       icon.classList.remove("fa-bars");
+//       icon.classList.add("fa-times");
+//       // console.log("berhasil");
+//     } else {
+//       icon.classList.remove("fa-times");
+//       icon.classList.add("fa-bars");
+//     }
+//   });
+// });
+document.addEventListener("DOMContentLoaded", function () {
+  const hamburger = document.querySelector(".hamburger");
+  const navLinks = document.querySelector(".nav-links");
+  const navItems = document.querySelectorAll(".nav-links li a");
+
+  if (hamburger && navLinks) {
+    hamburger.addEventListener("click", function () {
+      navLinks.classList.toggle("show");
+
+      const icon = hamburger.querySelector("i");
+      if (icon.classList.contains("fa-bars")) {
+        icon.classList.remove("fa-bars");
+        icon.classList.add("fa-times");
+      } else {
+        icon.classList.remove("fa-times");
+        icon.classList.add("fa-bars");
+      }
+    });
+
+    navItems.forEach((item) => {
+      item.addEventListener("click", function () {
+        navLinks.classList.remove("show");
+
+        const icon = hamburger.querySelector("i");
+        if (icon.classList.contains("fa-times")) {
+          icon.classList.remove("fa-times");
+          icon.classList.add("fa-bars");
+        }
+      });
+    });
+  } else {
+    console.error("Hamburger or nav-links element not found.");
+  }
+});
+
 // slide
 const swiperEl = document.querySelector("swiper-container");
 Object.assign(swiperEl, {
