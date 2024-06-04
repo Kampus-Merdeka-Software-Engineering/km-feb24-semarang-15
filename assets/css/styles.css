@@ -707,7 +707,7 @@ body.dark .line-footer {
 
   .filter {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 10px auto;
@@ -716,7 +716,7 @@ body.dark .line-footer {
   select {
     background-color: #fff;
     border: 1px #a19a4c solid;
-    width: 170px;
+    width: 300px;
     padding: 12px;
     border-radius: 14px;
   }
