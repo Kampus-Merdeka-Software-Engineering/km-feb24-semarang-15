@@ -42,7 +42,8 @@ body {
 /* redudance style */
 #our_team,
 #analytics,
-#about-us {
+#about-us, 
+#feedback-form {
   padding: 6rem;
 }
 
@@ -53,105 +54,7 @@ body {
   margin-bottom: 30px;
 }
 
-/* style navbar and hamburger menu for mobile */
-/* nav {
-  position: fixed;
-  width: 100vw;
-  display: flex;
-  justify-content: space-between;
-  background-color: transparent;
-  z-index: 10;
-  padding: 15px 0;
-  color: white;
-  border-bottom: 1px solid rgba(128, 128, 128, 0.226);
-  transition: background-color 0.3s;
-}
-nav.scrolled {
-  backdrop-filter: blur(12px);
-  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
-    0 8px 10px -6px rgb(0 0 0 / 0.1);
-  padding: 10px 0;
-  transition: 0.5s ease-in;
-  color: black;
-  border: none;
-}
-nav .logo {
-  margin-left: 20px;
-  display: flex;
-}
-nav .logo img {
-  width: 70px;
-}
-
-nav .logo h3 {
-  font-size: 32px;
-  font-weight: 600;
-  line-height: 52px;
-  letter-spacing: -2%;
-  margin-left: 10px;
-  margin-top: 5px;
-}
-nav ul {
-  display: flex;
-  list-style-type: none;
-  width: 30%;
-  justify-content: space-between;
-  align-items: center;
-  margin-left: 300px;
-}
-nav ul li {
-  margin: 0 10px;
-  position: relative;
-}
-nav ul li a {
-  color: white;
-  text-decoration: none;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 24px;
-  transition: color 0.5s;
-  display: block;
-  transition: background-color 0.3s, color 0.3s;
-}
-nav ul li a.active {
-  color: #a19a4c !important;
-  font-weight: 600;
-}
-nav ul li a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0;
-  height: 3px;
-  border-radius: 5px;
-  background-color: #a19a4c;
-  transition: width 0.3s;
-}
-nav ul li a.active::after {
-  width: 70%;
-}
-
-nav.scrolled ul li a {
-  color: black;
-  font-weight: 600;
-}
-
-.hamburger {
-  display: none;
-  cursor: pointer;
-  margin-right: 20px;
-}
-
-.hamburger i {
-  font-size: 24px;
-  color: white;
-}
-
-nav ul.nav-links {
-  display: flex;
-} */
-/* General styles for navigation */
+/*  styles for navigation */
 nav {
   position: fixed;
   width: 100vw;
@@ -273,104 +176,6 @@ nav.scrolled ul.nav-links li a {
   font-size: 24px;
   color: white;
 }
-
-
-/* nav {
-  position: fixed;
-  width: 100vw;
-  display: flex;
-  justify-content: space-around;
-  background-color: transparent;
-  z-index: 10;
-  padding: 15px 0;
-  color: white;
-  border-bottom: 1px solid rgba(128, 128, 128, 0.226);
-}
-
-nav ul {
-  display: flex;
-  list-style-type: none;
-  width: 40%;
-  justify-content: space-between;
-  align-items: center;
-  margin-left: 300px;
-}
-
-nav ul li a {
-  color: white;
-  text-decoration: none;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 24px;
-  transition: color 0.5s;
-  display: block;
-}
-
-nav ul li a.active {
-  color: #a19a4c !important;
-}
-
-nav ul li a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0;
-  height: 2px;
-  background-color: #a19a4c;
-  transition: width 0.5s;
-}
-nav ul li a.active::after {
-  width: 50% !important;
-}
-
-nav.scrolled {
-  backdrop-filter: blur(12px);
-  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
-    0 8px 10px -6px rgb(0 0 0 / 0.1);
-  padding: 10px 0;
-  transition: 0.5s ease-in;
-  color: black;
-  border: none;
-}
-
-nav.scrolled ul li a {
-  color: black;
-}
-
-.logo {
-  margin-left: 60px;
-  display: flex;
-}
-
-.logo img {
-  width: 70px;
-}
-
-.logo h3 {
-  font-size: 32px;
-  font-weight: 600;
-  line-height: 52px;
-  letter-spacing: -2%;
-  margin-left: 10px;
-  margin-top: 5px;
-} */
-
-/* add class for change nav then scroll */
-/* nav.sticky {
-  backdrop-filter: blur(12px);
-  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
-    0 8px 10px -6px rgb(0 0 0 / 0.1);
-  padding: 10px 0;
-  transition: 0.5s ease-in;
-  color: black;
-  border: none;
-} */
-
-/* nav.sticky ul li a {
-  color: black;
-} */
-
 
 /* end style navbar and hamburger menu for mobile */
 
@@ -748,6 +553,57 @@ swiper-slide {
 }
 /* end style about */
 
+/* style feedback */
+input,
+textarea {
+  width: 100%;
+  border: 0px;
+  outline: none;
+  font-family: 'Poppins', sans-serif;
+}
+
+.form-input {
+  border: solid 1px #b3b3b3;
+  padding: 6px;
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
+.form-box {
+  width: 400px;
+  margin: 20px auto;
+  background-color: white;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 15px 15px 30px #a19a4c;
+}
+
+.text-form p {
+  color: black;
+  margin: 10px auto;
+  font-size: 14px;
+}
+
+
+textarea {
+  resize: none;
+  padding: 10px;
+  height: 100px;
+}
+
+.button {
+  width: 100%;
+  background-color: #a19a4c;
+  border: none;
+  padding: 13px 0;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  margin: 20px auto;
+}
+
+/* end style feedback */
+
 /* style footer */
 footer {
   padding: 1rem 6rem;
@@ -790,7 +646,7 @@ footer {
   }
 
   nav ul.nav-links li {
-    margin: 20px 0; /* Mengurangi margin antar item menu */
+    margin: 20px 0;
   }
 
   .hamburger {
@@ -801,6 +657,7 @@ footer {
     color: black;
   }
 }
+
 /* responsive for breakpoints mobile */
 @media screen and (max-width: 576px) {
   nav ul.nav-links {
@@ -833,6 +690,10 @@ footer {
 
   .hamburger {
     display: block;
+  }
+
+  nav .hamburger i{
+    margin-right: 50px;
   }
 
   nav.scrolled .hamburger i {
@@ -868,10 +729,6 @@ footer {
     transition: width 0.3s;
   }
 
-  .logo img {
-    width: 50px;
-    height: 50px;
-  }
 
   nav .logo img {
     width: 70px;
@@ -879,8 +736,8 @@ footer {
   }
 
   nav .logo h3 {
-    font-size: 24px;
-    margin-top: 10px;
+    font-size: 20px;
+    margin-bottom: 10px;
   }
 
   /* style section home for mobile */
@@ -903,9 +760,14 @@ footer {
   #analytics,
   #our_team,
   #about-us,
-  footer {
+  #feedback-form{
     padding: 3rem 2rem;
   }
+
+  footer{
+    padding: 1rem 2rem;
+  }
+
   .mentor {
     display: flex;
     flex-direction: column;
@@ -950,8 +812,6 @@ footer {
   .read-more {
     width: 50%;
   }
-
-
 
   @keyframes zoomIn {
     0% {

@@ -376,6 +376,8 @@ body.dark .dataTables_wrapper .dataTables_info {
   color: var(--text-color);
 }
 
+/* end mode dark */
+
 table.dataTable thead {
   background-color: #827717;
 }
@@ -437,6 +439,55 @@ td.profit {
 .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
   background-color: #a19a4c !important;
   color: #fff !important;
+}
+/* General styles for the table */
+.dataTables-container__profit__sales {
+  overflow-x: auto;
+}
+
+/* .dataTables__sales__profit {
+  margin: 20px;
+} */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: left;
+}
+
+/* th {
+  background-color: #f4f4f4;
+  cursor: pointer;
+}
+
+td {
+  background-color: #fff;
+} */
+
+@media (max-width: 768px) {
+  /* table,
+  th,
+  td {
+    display: block;
+    width: 100%;
+  } */
+
+  /* th,
+  td {
+    box-sizing: border-box;
+    padding: 10px;
+  }
+
+  th {
+    position: sticky;
+    top: 0;
+    background: #f4f4f4;
+  } */
 }
 
 /* end sidebar */
