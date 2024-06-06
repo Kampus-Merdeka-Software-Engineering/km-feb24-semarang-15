@@ -1,74 +1,63 @@
 // hamburger menu
-const menuToggle = document.querySelector(".menu-toggle input");
-const navSlide = document.querySelector("nav");
+document.addEventListener("DOMContentLoaded", function () {
+  const hamburger = document.querySelector(".hamburger");
+  const navLinks = document.querySelector(".nav-links");
+  const navItems = document.querySelectorAll(".nav-links li a");
 
-menuToggle.addEventListener("click", function () {
-  navSlide.classList.toggle("slide");
+  if (hamburger && navLinks) {
+    hamburger.addEventListener("click", function () {
+      navLinks.classList.toggle("show");
+
+      const icon = hamburger.querySelector("i");
+      if (icon.classList.contains("fa-bars")) {
+        icon.classList.remove("fa-bars");
+        icon.classList.add("fa-times");
+      } else {
+        icon.classList.remove("fa-times");
+        icon.classList.add("fa-bars");
+      }
+    });
+
+    navItems.forEach((item) => {
+      item.addEventListener("click", function () {
+        navLinks.classList.remove("show");
+
+        const icon = hamburger.querySelector("i");
+        if (icon.classList.contains("fa-times")) {
+          icon.classList.remove("fa-times");
+          icon.classList.add("fa-bars");
+        }
+      });
+    });
+  } else {
+    console.error("Hamburger or nav-links element not found.");
+  }
 });
 
-// const menuToggle = document.querySelector(".menu-toggle input");
-// const navMenu = document.querySelector("nav");
+// form email
+function validateEmail(email) {
+  const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+  return re.test(email);
+}
 
-// menuToggle.addEventListener("click", function () {
-//   menuToggle.classList.toggle("slide");
-//   navMenu.classList.toggle("hidden");
-// });
+function validateForm() {
+  const email = document.getElementById("email").value;
+  if (!validateEmail(email)) {
+    alert("Silakan masukkan email yang valid.");
+    return false;
+  }
 
-// window.addEventListener("click", function (e) {
-//   if (e.target != menuToggle && e.target != navMenu) {
-//     menuToggle.classList.remove(".menu-toggle input");
-//     navMenu.classList.add("hidden");
-//   }
-// });
+  const name = document.getElementById("name").value;
+  const feedback = document.getElementById("feedback").value;
 
-// add class when nav scroll
-// document.addEventListener("DOMContentLoaded", function () {
-//   window.addEventListener("scroll", function () {
-//     var nav = document.querySelector("nav");
-//     if (window.scrollY > 550) {
-//       nav.classList.add("sticky");
-//     } else {
-//       nav.classList.remove("sticky");
-//     }
-//   });
-// });
+  if (name === "" || feedback === "") {
+    alert("Semua field harus diisi.");
+    return false;
+  }
 
-// Buka dan baca file JSON
-
-// const fetchData = () => {
-//   return fetch("data/SUPERSTORE-TEAM15.json")
-//     .then((response) => response.json())
-//     .then((data) => {
-//       // Ambil nilai yang Anda butuhkan dari file JSON
-//       const salesValue = data[0].Sales; // Mengambil nilai Sales dari data pertama
-//       const profitValue = data[1].Profit; // Mengambil nilai Profit dari data kedua
-
-//       // Perbarui nilai tag <p> dengan nilai yang diperoleh
-//       document.getElementById("salesValue").innerText = salesValue;
-//       document.getElementById("profitValue").innerText = profitValue;
-//       document.getElementById("salesValue_1").innerText = salesValue;
-//       document.getElementById("profitValue_2").innerText = profitValue;
-//     })
-//     .catch((error) => {
-//       console.error("Error fetching the dataset:", error);
-//       return [];
-//     });
-// };
-
-fetch("SUPERSTORE-TEAM15.json")
-  .then((response) => response.json())
-  .then((data) => {
-    // Ambil nilai yang Anda butuhkan dari file JSON
-    const salesValue = data[0].Sales; // Mengambil nilai Sales dari data pertama
-    const profitValue = data[1].Profit; // Mengambil nilai Profit dari data kedua
-
-    // Perbarui nilai tag <p> dengan nilai yang diperoleh
-    document.getElementById("salesValue").innerText = salesValue;
-    document.getElementById("profitValue").innerText = profitValue;
-    document.getElementById("salesValue_1").innerText = salesValue;
-    document.getElementById("profitValue_2").innerText = profitValue;
-  })
-  .catch((error) => console.error("Error reading JSON:", error));
+  alert("Terima kasih atas feedback Anda!");
+  return true;
+}
 
 // slide
 const swiperEl = document.querySelector("swiper-container");
