@@ -59,6 +59,29 @@ function validateForm() {
   return true;
 }
 
+// button for back to top
+const backToTopButton = document.getElementById("backToTop");
+
+// Menambahkan event listener untuk scroll
+window.addEventListener("scroll", () => {
+  // Jika pengguna menggulir ke bawah lebih dari 300px, tampilkan tombol
+  if (window.scrollY > 300) {
+    backToTopButton.classList.add("show");
+  } else {
+    backToTopButton.classList.remove("show");
+  }
+});
+
+// Menambahkan event listener untuk klik pada tombol
+backToTopButton.addEventListener("click", (event) => {
+  event.preventDefault();
+  // Gulir ke atas dengan mulus
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+});
+
 // slide
 const swiperEl = document.querySelector("swiper-container");
 Object.assign(swiperEl, {

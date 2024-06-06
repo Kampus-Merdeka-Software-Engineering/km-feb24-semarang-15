@@ -378,16 +378,25 @@ main {
 }
 
 .content {
+  margin: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.content-card {
+  display: flex;
+  padding: 30px;
   background-color: #fff;
-  padding: 40px;
-  margin: 20px 0;
   border-radius: 10px;
 }
 
-.content p {
+.content-card p {
   text-align: justify;
 }
-
+.fa-angles-right {
+  margin: auto 20px;
+}
 #conclusion h1 {
   margin-top: 50px;
 }
@@ -409,6 +418,51 @@ footer {
   font-size: 14px;
 }
 /* end style footer */
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  main {
+    padding: 0;
+  }
+
+  #recommendation {
+    padding: 6rem 2rem 0rem 2rem;
+  }
+  #conclusion {
+    padding: 1rem 2rem;
+  }
+  .sidebar {
+    transition: left 0.3s ease;
+  }
+
+  .sidebar.close {
+    left: -200px;
+  }
+
+  .sidebar.close .image {
+    display: none;
+  }
+
+  .sidebar header .toggle {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  footer {
+    padding: 3rem 3rem 1rem 3rem;
+  }
+
+  .title__footer {
+    margin: 10px 0;
+  }
+
+  .line-footer {
+    width: 100%;
+  }
+}
 
 /* here responsive for breakpoints mobile */
 @media screen and (max-width: 576px) {
@@ -447,7 +501,8 @@ footer {
     padding: 0 1.5rem;
   }
   footer {
-    padding: 2rem;
+    padding: 2rem 2rem 0 2rem;
+    margin-top: 20px;
   }
 
   .line-footer {
