@@ -627,6 +627,14 @@ option {
   text-align: justify;
 }
 
+.content__sales {
+  margin-top: 50px;
+}
+
+.content__sales p {
+  margin-top: 10px;
+}
+
 /* style footer */
 footer {
   padding: 1rem 2rem;
