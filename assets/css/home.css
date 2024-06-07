@@ -768,6 +768,9 @@ footer {
 
 /* responsive for breakpoints mobile */
 @media screen and (max-width: 576px) {
+  nav {
+    width: 50vw;
+  }
   nav ul.nav-links {
     position: fixed;
     display: flex;
@@ -873,7 +876,7 @@ footer {
   }
 
   .grid-container {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
   }
   #follow-us {
