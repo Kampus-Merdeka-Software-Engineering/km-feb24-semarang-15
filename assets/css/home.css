@@ -42,7 +42,7 @@ body {
 /* redudance style */
 #our_team,
 #analytics,
-#about-us, 
+#about-us,
 #feedback-form {
   padding: 6rem;
 }
@@ -71,7 +71,8 @@ nav {
 
 nav.scrolled {
   backdrop-filter: blur(12px);
-  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+    0 8px 10px -6px rgb(0 0 0 / 0.1);
   padding: 10px 20px;
   transition: 0.5s ease-in;
   color: black;
@@ -559,7 +560,7 @@ textarea {
   width: 100%;
   border: 0px;
   outline: none;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .form-input {
@@ -584,7 +585,6 @@ textarea {
   font-size: 14px;
 }
 
-
 textarea {
   resize: none;
   padding: 10px;
@@ -608,7 +608,7 @@ textarea {
   height: 40px;
   bottom: 20px;
   right: 20px;
-  display: none; 
+  display: none;
   color: white;
   padding: 10px;
   border-radius: 50%;
@@ -624,11 +624,11 @@ textarea {
   opacity: 1;
 }
 
-#follow-us{
+#follow-us {
   padding: 6rem 6rem 1rem 6rem;
 }
 
-.logo__followus{
+.logo__followus {
   display: flex;
   gap: 30px;
   margin-top: 30px;
@@ -636,10 +636,9 @@ textarea {
   margin-bottom: 20px;
 }
 
-.logo__followus img{
+.logo__followus img {
   width: 30px;
 }
-
 
 /* end style feedback */
 
@@ -659,8 +658,7 @@ footer {
   font-size: 14px;
 }
 /* end style footer */
-@media screen and (min-width: 768px) and (max-width: 1024px){
-
+@media screen and (min-width: 768px) and (max-width: 1024px) {
   nav ul.nav-links {
     position: fixed;
     display: flex;
@@ -687,14 +685,14 @@ footer {
   }
 
   nav ul.nav-links li {
-    margin: 20px 0; 
+    margin: 20px 0;
   }
 
   .hamburger {
     display: block;
   }
 
-  nav .hamburger i{
+  nav .hamburger i {
     margin-right: 50px;
   }
 
@@ -711,14 +709,14 @@ footer {
     align-items: center;
     margin-left: 8px;
   }
-  nav ul.nav-links li a{
+  nav ul.nav-links li a {
     color: white;
   }
   nav ul.nav-links li a.active {
     color: white !important;
     font-weight: 600;
   }
-  
+
   nav ul.nav-links li a::after {
     content: "";
     position: absolute;
@@ -766,7 +764,6 @@ footer {
       opacity: 1;
     }
   }
-
 }
 
 /* responsive for breakpoints mobile */
@@ -797,14 +794,14 @@ footer {
   }
 
   nav ul.nav-links li {
-    margin: 20px 0; 
+    margin: 20px 0;
   }
 
   .hamburger {
     display: block;
   }
 
-  nav .hamburger i{
+  nav .hamburger i {
     margin-right: 50px;
   }
 
@@ -821,14 +818,14 @@ footer {
     align-items: center;
     margin-left: 8px;
   }
-  nav ul.nav-links li a{
+  nav ul.nav-links li a {
     color: white;
   }
   nav ul.nav-links li a.active {
     color: white !important;
     font-weight: 600;
   }
-  
+
   nav ul.nav-links li a::after {
     content: "";
     position: absolute;
@@ -840,7 +837,6 @@ footer {
     background-color: #a19a4c;
     transition: width 0.3s;
   }
-
 
   nav .logo img {
     width: 70px;
@@ -872,15 +868,15 @@ footer {
   #analytics,
   #our_team,
   #about-us,
-  #feedback-form{
+  #feedback-form {
     padding: 3rem 2rem;
   }
 
-  #follow-us{
+  #follow-us {
     padding: 5rem 2rem 1rem 2rem;
   }
 
-  footer{
+  footer {
     padding: 1rem 2rem;
   }
 
@@ -893,12 +889,36 @@ footer {
     font-size: 16px;
   }
 
+  /* .swiper-button-next,
+.swiper-button-prev {
+  background-color: #a19a4c;
+  border-radius: 50%;
+  border-top: 2px solid white;
+  border-bottom: 2px solid #a19a4c;
+}
+
+.swiper-button-next {
+  top: -350px;
+  right: 70px;
+  padding: 20px;
+}
+
+.swiper-button-prev {
+  top: -350px;
+  left: 70px;
+  padding: 20px;
+} */
+
   .swiper-button-next {
-    display: none;/
+    display: none;
+    top: 0;
+    right: 0;
   }
 
   .swiper-button-prev {
     display: none;
+    top: 0;
+    left: 0;
   }
 
   /* style about for mobile */
