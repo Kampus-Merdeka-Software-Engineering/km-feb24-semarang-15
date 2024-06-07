@@ -768,9 +768,6 @@ footer {
 
 /* responsive for breakpoints mobile */
 @media screen and (max-width: 576px) {
-  nav {
-    width: 50vw;
-  }
   nav ul.nav-links {
     position: fixed;
     display: flex;
