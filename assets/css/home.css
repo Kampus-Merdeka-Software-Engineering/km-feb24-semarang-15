@@ -872,6 +872,10 @@ footer {
     padding: 3rem 2rem;
   }
 
+  .grid-container {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+  }
   #follow-us {
     padding: 5rem 2rem 1rem 2rem;
   }
