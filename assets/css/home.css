@@ -943,7 +943,7 @@ footer {
 
   .about__image img {
     width: 100%;
-    animation: zoomIn 5s ease infinite;
+    /* animation: zoomIn 5s ease infinite; */
   }
 
   .about__title h2 {
