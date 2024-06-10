@@ -579,6 +579,18 @@ option {
   margin: 0 auto;
 }
 
+.chart-container__profit__sales__year {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 20px;
+  margin: 0 auto;
+  width: fit-content;
+}
+
+canvas {
+  width: 100% !important;
+  height: 450px !important;
+}
 .chart-container {
   width: 50%;
 }
@@ -592,7 +604,7 @@ option {
 }
 
 .chart__profit__sales {
-  width: 600px;
+  width: 800px;
 }
 
 .geo_chart {
@@ -696,8 +708,41 @@ body.dark .line-footer {
     margin: 50px 0;
   }
 
+  .chart-container__profit__sales {
+    width: 100%;
+  }
+
   .cards-container {
     margin-top: 30px;
+    margin-bottom: 40px;
+  }
+
+  .chart-container__profit__sales__year {
+    margin-top: 50px;
+  }
+
+  table thead {
+    display: none;
+  }
+  table tr {
+    display: block;
+    margin-bottom: 0.625em;
+  }
+  table td {
+    display: block;
+    text-align: right;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+    padding-left: 50%;
+  }
+  table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 50%;
+    padding-left: 15px;
+    font-weight: bold;
+    text-align: left;
   }
 
   footer {
@@ -826,10 +871,20 @@ body.dark .line-footer {
     width: 70vw;
     z-index: -1;
   }
-  /* .geo__chart__sales,
-  .geo__chart__profit {
-    width: 300px;
-  } */
+
+  .chart-container__profit__sales__year {
+    margin-top: 50px;
+  }
+  canvas {
+    width: 100% !important;
+    height: 500px !important;
+  }
+
+  .chart__percategory {
+    height: 400px !important;
+    height: 400px !important;
+  }
+
   table {
     width: 10%;
   }

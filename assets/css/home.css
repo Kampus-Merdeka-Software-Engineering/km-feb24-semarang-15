@@ -101,7 +101,7 @@ nav .logo h3 {
 nav ul {
   display: flex;
   list-style-type: none;
-  width: 30%;
+  width: 40%;
   justify-content: space-between;
   align-items: center;
   margin-right: 80px;
