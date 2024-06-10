@@ -69,7 +69,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
             label: "Sales",
             data: sales,
             backgroundColor: "rgba(120, 128, 54, 50)",
-            // borderColor: "rgba(75, 192, 192, 1)",
             borderWidth: 1,
             barPercentage: 0.9,
           },
@@ -77,13 +76,14 @@ document.addEventListener("DOMContentLoaded", (event) => {
             label: "Profit",
             data: profits,
             backgroundColor: "rgba(251, 184, 54, 98)",
-            // borderColor: "rgba(153, 102, 255, 1)",
             borderWidth: 1,
             barPercentage: 0.9,
           },
         ],
       },
       options: {
+        responsive: true,
+        maintainAspectRatio: false,
         scales: {
           x: {
             grid: {
@@ -98,7 +98,9 @@ document.addEventListener("DOMContentLoaded", (event) => {
               display: false,
             },
             ticks: {
-              padding: 20,
+              callback: function (value) {
+                return `${value / 1000000} jt`; // Convert to 'jt'
+              },
             },
           },
         },

@@ -27,7 +27,7 @@ window.addEventListener("scroll", () => {
   }
 });
 
-// sidebar
+// toggle for sidebar
 const body = document.querySelector("body"),
   sidebar = body.querySelector("nav"),
   toggle = body.querySelector(".toggle"),
@@ -38,18 +38,7 @@ toggle.addEventListener("click", () => {
   sidebar.classList.toggle("close");
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-  const dropdown = document.querySelector(".nav-links.dropdown");
-  const arrow = dropdown.querySelector(".arrow");
-
-  dropdown.addEventListener("click", function (event) {
-    event.preventDefault(); // Prevent the default action
-    this.classList.toggle("active");
-    arrow.classList.toggle("bx-chevron-up");
-    arrow.classList.toggle("bx-chevron-down");
-  });
-});
-
+// toggle hamburger menu
 document.addEventListener("DOMContentLoaded", function () {
   const btn = document.querySelector(".hamburger .nav-hamburger");
   const sidebar = document.querySelector(".sidebar");
@@ -62,6 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+// toggle switch mode dark or mode light
 modeSwitch.addEventListener("click", () => {
   body.classList.toggle("dark");
 

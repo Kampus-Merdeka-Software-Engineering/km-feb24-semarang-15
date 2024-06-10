@@ -261,21 +261,21 @@ fetch("data/SUPERSTORE-TEAM15.json")
           {
             label: "Total Profit",
             data: totalProfit,
-            borderColor: "rgba(255, 159, 64, 1)",
-            backgroundColor: "rgba(255, 159, 64, 0.2)",
+            borderColor: "rgb(255, 143, 0)",
+            backgroundColor: "rgb(255, 143, 0)",
             fill: false,
           },
           {
             label: "Total Sales",
             data: totalSales,
-            borderColor: "rgba(75, 192, 192, 1)",
-            backgroundColor: "rgba(75, 192, 192, 0.2)",
+            borderColor: "rgb(130, 119, 23)",
+            backgroundColor: "rgb(130, 119, 23)",
             fill: false,
           },
           {
             label: "Average Profit",
             data: new Array(sortedLabels.length).fill(averageProfit),
-            borderColor: "rgba(255, 159, 64, 0.5)",
+            borderColor: "rgb(255, 143, 0)",
             borderWidth: 2,
             borderDash: [5, 5],
             pointRadius: 0,
@@ -283,7 +283,7 @@ fetch("data/SUPERSTORE-TEAM15.json")
           {
             label: "Average Sales",
             data: new Array(sortedLabels.length).fill(averageSales),
-            borderColor: "rgba(75, 192, 192, 0.5)",
+            borderColor: "rgb(130, 119, 23)",
             borderWidth: 2,
             borderDash: [5, 5],
             pointRadius: 0,
@@ -292,10 +292,10 @@ fetch("data/SUPERSTORE-TEAM15.json")
       },
       options: {
         responsive: true,
+        maintainAspectRatio: false,
         plugins: {
           title: {
             display: true,
-            text: "Profit and Sales",
           },
           tooltip: {
             callbacks: {
@@ -312,20 +312,10 @@ fetch("data/SUPERSTORE-TEAM15.json")
             title: {
               display: true,
             },
-            // ticks: {
-            //   callback: function (value, index, ticks) {
-            //     if (filteredLabels.includes(this.getLabelForValue(value))) {
-            //       return this.getLabelForValue(value);
-            //     } else {
-            //       return "";
-            //     }
-            //   },
-            // },
           },
           y: {
             title: {
               display: true,
-              text: "Amount",
             },
             ticks: {
               callback: function (value) {
