@@ -586,7 +586,10 @@ option {
   margin: 0 auto;
   width: fit-content;
 }
-
+.chart__sales__persegment {
+  height: 400px !important;
+  width: 400px !important;
+}
 canvas {
   width: 100% !important;
   height: 450px !important;
@@ -884,7 +887,10 @@ body.dark .line-footer {
     height: 400px !important;
     height: 400px !important;
   }
-
+  .chart__sales__persegment {
+    height: 300px !important;
+    width: 300px !important;
+  }
   table {
     width: 10%;
   }
