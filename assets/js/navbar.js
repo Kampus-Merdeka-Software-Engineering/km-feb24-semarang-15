@@ -39,6 +39,18 @@ toggle.addEventListener("click", () => {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
+  const dropdown = document.querySelector(".nav-links.dropdown");
+  const arrow = dropdown.querySelector(".arrow");
+
+  dropdown.addEventListener("click", function (event) {
+    event.preventDefault(); // Prevent the default action
+    this.classList.toggle("active");
+    arrow.classList.toggle("bx-chevron-up");
+    arrow.classList.toggle("bx-chevron-down");
+  });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
   const btn = document.querySelector(".hamburger .nav-hamburger");
   const sidebar = document.querySelector(".sidebar");
   const hamburger = document.querySelector(".hamburger");

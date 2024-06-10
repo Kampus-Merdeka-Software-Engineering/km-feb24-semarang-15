@@ -1,751 +1,446 @@
-// document.addEventListener("DOMContentLoaded", (event) => {
-//   let chart; // To hold the chart instance
+// fetch("data/SUPERSTORE-TEAM15.json")
+//   .then((response) => response.json())
+//   .then((data) => {
+//     const profitData = {};
+//     const salesData = {};
+//     const monthMapping = {
+//       January: "Jan",
+//       February: "Feb",
+//       March: "Mar",
+//       April: "Apr",
+//       May: "May",
+//       June: "Jun",
+//       July: "Jul",
+//       August: "Aug",
+//       September: "Sep",
+//       October: "Oct",
+//       November: "Nov",
+//       December: "Dec",
+//     };
 
-//   const fetchData = () => {
-//     return fetch("data/SUPERSTORE-TEAM15.json")
-//       .then((response) => response.json())
-//       .catch((error) => {
-//         console.error("Error fetching the dataset:", error);
-//         return [];
-//       });
-//   };
+//     data.forEach((order) => {
+//       const year = order.Year_Separated;
+//       const month = order.Month_Separated;
+//       const monthYear = `${monthMapping[month]} ${year}`;
 
-//   const updateChart = (data, year, region) => {
-//     let filteredData = data;
-
-//     // Filter by year
-//     if (year !== "All Year") {
-//       filteredData = filteredData.filter(
-//         (item) => item.Year_Separated === year
-//       );
-//     }
-
-//     // Filter by region
-//     if (region !== "All Regions") {
-//       filteredData = filteredData.filter((item) => item.Region === region);
-//     }
-
-//     const categories = [];
-//     const sales = [];
-//     const profits = [];
-
-//     filteredData.forEach((item) => {
-//       if (!categories.includes(item.Category)) {
-//         categories.push(item.Category);
+//       if (!profitData[monthYear]) {
+//         profitData[monthYear] = 0;
+//         salesData[monthYear] = 0;
 //       }
+//       profitData[monthYear] += order.Profit;
+//       salesData[monthYear] += order.Sales;
 //     });
 
-//     categories.forEach((category) => {
-//       const categorySales = filteredData
-//         .filter((item) => item.Category === category)
-//         .reduce((sum, item) => sum + parseFloat(item.Sales), 0);
-//       sales.push(categorySales);
-
-//       const categoryProfit = filteredData
-//         .filter((item) => item.Category === category)
-//         .reduce((sum, item) => sum + parseFloat(item.Profit), 0);
-//       profits.push(categoryProfit);
+//     const sortedLabels = Object.keys(profitData).sort((a, b) => {
+//       const [monthA, yearA] = a.split(" ");
+//       const [monthB, yearB] = b.split(" ");
+//       return (
+//         new Date(`${monthA} 01, ${yearA}`) - new Date(`${monthB} 01, ${yearB}`)
+//       );
 //     });
 
-//     // Update total penjualan dan total keuntungan pada kartu
-//     document.getElementById("totalSales").textContent =
-//       "$" + sales.reduce((sum, value) => sum + value).toLocaleString("en-US");
+//     const totalProfit = sortedLabels.map((label) => profitData[label]);
+//     const totalSales = sortedLabels.map((label) => salesData[label]);
 
-//     document.getElementById("totalProfit").textContent =
-//       "$" + profits.reduce((sum, value) => sum + value).toLocaleString("en-US");
+//     const updateSalesAndProfit = (selectedYear, selectedRegion) => {
+//       let filteredData = data;
 
-//     const ctx = document.getElementById("myChart").getContext("2d");
+//       // Filter by year
+//       if (selectedYear !== "All Year") {
+//         filteredData = filteredData.filter(
+//           (item) => item.Year_Separated === selectedYear
+//         );
+//       }
 
-//     if (chart) {
-//       chart.destroy(); // Destroy the previous chart instance if it exists
-//     }
+//       // Filter by region
+//       if (selectedRegion !== "All Regions") {
+//         filteredData = filteredData.filter(
+//           (item) => item.Region === selectedRegion
+//         );
+//       }
 
-//     chart = new Chart(ctx, {
-//       type: "line",
-//       data: {
-//         labels: categories,
-//         datasets: [
-//           {
-//             label: "Sales",
-//             data: sales,
-//             backgroundColor: "rgba(120, 128, 54, 50)",
-//             // borderColor: "rgba(75, 192, 192, 1)",
-//             borderWidth: 1,
-//             barPercentage: 0.9,
-//           },
-//           {
-//             label: "Profit",
-//             data: profits,
-//             backgroundColor: "rgba(251, 184, 54, 98)",
-//             // borderColor: "rgba(153, 102, 255, 1)",
-//             borderWidth: 1,
-//             barPercentage: 0.9,
-//           },
-//         ],
-//       },
-//       options: {
-//         scales: {
-//           x: {
-//             grid: {
-//               display: false,
-//             },
-//             ticks: {
-//               padding: 20,
-//             },
-//           },
-//           y: {
-//             grid: {
-//               display: false,
-//             },
-//             ticks: {
-//               padding: 20,
-//             },
-//           },
-//         },
-//         plugins: {
-//           legend: {
-//             position: "top",
-//             align: "end",
-//             labels: {
-//               padding: 20,
-//               usePointStyle: true,
-//               pointStyle: "circle",
-//             },
-//           },
-//         },
-//       },
-//     });
-//   };
+//       // Calculate total profit and total sales for filtered data
+//       const totalProfitValue = filteredData.reduce(
+//         (sum, item) => sum + parseFloat(item.Profit),
+//         0
+//       );
+//       const totalSalesValue = filteredData.reduce(
+//         (sum, item) => sum + parseFloat(item.Sales),
+//         0
+//       );
 
-//   fetchData().then((data) => {
-//     console.log("Fetched data:", data);
+//       // Update total profit and total sales in the document
+//       document.getElementById("totalProfit").textContent =
+//         "$" + totalProfitValue.toLocaleString("en-US");
+//       document.getElementById("totalSales").textContent =
+//         "$" + totalSalesValue.toLocaleString("en-US");
+//     };
 
 //     const yearFilter = document.getElementById("yearFilter");
 //     const regionFilter = document.getElementById("regionFilter");
 
-//     const updateChartFilters = () => {
-//       const selectedYear = yearFilter.value;
+//     // Add event listeners to both filters
+//     yearFilter.addEventListener("change", function () {
+//       const selectedYear = this.value;
 //       const selectedRegion = regionFilter.value;
-//       updateChart(data, selectedYear, selectedRegion);
-//     };
-
-//     yearFilter.addEventListener("change", updateChartFilters);
-//     regionFilter.addEventListener("change", updateChartFilters);
-
-//     // Initialize chart with all years (2014-2017) and all regions
-//     updateChart(data, "All Year", "All Regions");
-//   });
-// });
-
-// document.addEventListener("DOMContentLoaded", (event) => {
-//   let chart; // To hold the chart instance
-
-//   const fetchData = () => {
-//     return fetch("data/SUPERSTORE-TEAM15.json")
-//       .then((response) => response.json())
-//       .catch((error) => {
-//         console.error("Error fetching the dataset:", error);
-//         return [];
-//       });
-//   };
-
-//   const updateChart = (data, year, region) => {
-//     let filteredData = data;
-
-//     // Filter by year
-//     if (year !== "All Year") {
-//       filteredData = filteredData.filter(
-//         (item) => item.Year_Separated === year
-//       );
-//     }
-
-//     // Filter by region
-//     if (region !== "All Regions") {
-//       filteredData = filteredData.filter((item) => item.Region === region);
-//     }
-
-//     const dates = [];
-//     const sales = [];
-//     const profits = [];
-
-//     filteredData.forEach((item) => {
-//       if (!dates.includes(item.Order_Date)) {
-//         dates.push(item.Order_Date);
-//       }
+//       updateSalesAndProfit(selectedYear, selectedRegion);
 //     });
 
-//     dates.sort();
-
-//     dates.forEach((date) => {
-//       const dateSales = filteredData
-//         .filter((item) => item.Order_Date === date)
-//         .reduce((sum, item) => sum + parseFloat(item.Sales), 0);
-//       sales.push(dateSales);
-
-//       const dateProfit = filteredData
-//         .filter((item) => item.Order_Date === date)
-//         .reduce((sum, item) => sum + parseFloat(item.Profit), 0);
-//       profits.push(dateProfit);
+//     regionFilter.addEventListener("change", function () {
+//       const selectedYear = yearFilter.value;
+//       const selectedRegion = this.value;
+//       updateSalesAndProfit(selectedYear, selectedRegion);
 //     });
 
-//     const avgSales = sales.reduce((sum, value) => sum + value) / sales.length;
-//     const avgProfits =
-//       profits.reduce((sum, value) => sum + value) / profits.length;
+//     // initial call to updateSalesAndProfit with default values
+//     updateSalesAndProfit("All Year", "All Regions");
 
-//     // Update total penjualan dan total keuntungan pada kartu
-//     document.getElementById("totalSales").textContent =
-//       "$" + sales.reduce((sum, value) => sum + value).toLocaleString("en-US");
+//     const filteredLabels = sortedLabels.filter(
+//       (label) =>
+//         label.startsWith("Jan") ||
+//         label.startsWith("Mar") ||
+//         label.startsWith("Jul") ||
+//         label.startsWith("Oct")
+//     );
 
-//     document.getElementById("totalProfit").textContent =
-//       "$" + profits.reduce((sum, value) => sum + value).toLocaleString("en-US");
+//     const averageProfit =
+//       totalProfit.reduce((a, b) => a + b, 0) / totalProfit.length;
+//     const averageSales =
+//       totalSales.reduce((a, b) => a + b, 0) / totalSales.length;
 
 //     const ctx = document.getElementById("myChart").getContext("2d");
-
-//     if (chart) {
-//       chart.destroy(); // Destroy the previous chart instance if it exists
-//     }
-
-//     chart = new Chart(ctx, {
+//     new Chart(ctx, {
 //       type: "line",
 //       data: {
-//         labels: dates,
+//         labels: sortedLabels,
 //         datasets: [
 //           {
-//             label: "Sales",
-//             data: sales,
-//             backgroundColor: "rgba(120, 128, 54, 0.2)",
-//             borderColor: "rgba(120, 128, 54, 1)",
-//             borderWidth: 1,
-//             tension: 0.3,
+//             label: "Total Profit",
+//             data: totalProfit,
+//             borderColor: "rgba(255, 159, 64, 1)",
+//             backgroundColor: "rgba(255, 159, 64, 0.2)",
+//             fill: false,
 //           },
 //           {
-//             label: "Profit",
-//             data: profits,
-//             backgroundColor: "rgba(251, 184, 54, 0.2)",
-//             borderColor: "rgba(251, 184, 54, 1)",
-//             borderWidth: 1,
-//             tension: 0.3,
+//             label: "Total Sales",
+//             data: totalSales,
+//             borderColor: "rgba(75, 192, 192, 1)",
+//             backgroundColor: "rgba(75, 192, 192, 0.2)",
+//             fill: false,
+//           },
+//           {
+//             label: "Average Profit",
+//             data: new Array(sortedLabels.length).fill(averageProfit),
+//             borderColor: "rgba(255, 159, 64, 0.5)",
+//             borderWidth: 2,
+//             borderDash: [5, 5],
+//             pointRadius: 0,
+//           },
+//           {
+//             label: "Average Sales",
+//             data: new Array(sortedLabels.length).fill(averageSales),
+//             borderColor: "rgba(75, 192, 192, 0.5)",
+//             borderWidth: 2,
+//             borderDash: [5, 5],
+//             pointRadius: 0,
 //           },
 //         ],
 //       },
 //       options: {
+//         responsive: true,
+//         plugins: {
+//           title: {
+//             display: true,
+//             text: "Profit and Sales",
+//           },
+//           tooltip: {
+//             callbacks: {
+//               label: function (tooltipItem) {
+//                 return `${
+//                   tooltipItem.dataset.label
+//                 }: ${tooltipItem.raw.toLocaleString()}`;
+//               },
+//             },
+//           },
+//         },
 //         scales: {
 //           x: {
-//             grid: {
-//               display: false,
+//             title: {
+//               display: true,
+//             },
+//             // ticks: {
+//             //   callback: function (value, index, ticks) {
+//             //     if (filteredLabels.includes(this.getLabelForValue(value))) {
+//             //       return this.getLabelForValue(value);
+//             //     } else {
+//             //       return "";
+//             //     }
+//             //   },
+//             // },
+//           },
+//           y: {
+//             title: {
+//               display: true,
+//               text: "Amount",
 //             },
 //             ticks: {
-//               padding: 20,
-//             },
-//           },
-//           y: {
-//             grid: {
-//               display: false,
-//             },
-//             ticks: {
-//               padding: 20,
-//             },
-//           },
-//         },
-//         plugins: {
-//           legend: {
-//             position: "top",
-//             align: "end",
-//             labels: {
-//               padding: 20,
-//               usePointStyle: true,
-//               pointStyle: "circle",
-//             },
-//           },
-//           annotation: {
-//             annotations: {
-//               line1: {
-//                 type: "line",
-//                 scaleID: "y",
-//                 value: avgSales,
-//                 borderColor: "rgba(120, 128, 54, 0.5)",
-//                 borderWidth: 2,
-//                 label: {
-//                   enabled: true,
-//                   content: "Average Sales",
-//                   backgroundColor: "rgba(120, 128, 54, 0.5)",
-//                   position: "start",
-//                 },
-//               },
-//               line2: {
-//                 type: "line",
-//                 scaleID: "y",
-//                 value: avgProfits,
-//                 borderColor: "rgba(251, 184, 54, 0.5)",
-//                 borderWidth: 2,
-//                 label: {
-//                   enabled: true,
-//                   content: "Average Profit",
-//                   backgroundColor: "rgba(251, 184, 54, 0.5)",
-//                   position: "start",
-//                 },
+//               callback: function (value) {
+//                 return `${value / 1000000} jt`; // Convert to 'jt'
 //               },
 //             },
 //           },
 //         },
 //       },
 //     });
-//   };
+//   })
+//   .catch((error) => console.error("Error fetching data:", error));
 
-//   fetchData().then((data) => {
-//     console.log("Fetched data:", data);
+fetch("data/SUPERSTORE-TEAM15.json")
+  .then((response) => response.json())
+  .then((data) => {
+    const profitData = {};
+    const salesData = {};
+    const monthMapping = {
+      January: "Jan",
+      February: "Feb",
+      March: "Mar",
+      April: "Apr",
+      May: "May",
+      June: "Jun",
+      July: "Jul",
+      August: "Aug",
+      September: "Sep",
+      October: "Oct",
+      November: "Nov",
+      December: "Dec",
+    };
 
-//     const yearFilter = document.getElementById("yearFilter");
-//     const regionFilter = document.getElementById("regionFilter");
+    data.forEach((order) => {
+      const year = order.Year_Separated;
+      const month = order.Month_Separated;
+      const monthYear = `${monthMapping[month]} ${year}`;
 
-//     const updateChartFilters = () => {
-//       const selectedYear = yearFilter.value;
-//       const selectedRegion = regionFilter.value;
-//       updateChart(data, selectedYear, selectedRegion);
-//     };
+      if (!profitData[monthYear]) {
+        profitData[monthYear] = 0;
+        salesData[monthYear] = 0;
+      }
+      profitData[monthYear] += order.Profit;
+      salesData[monthYear] += order.Sales;
+    });
 
-//     yearFilter.addEventListener("change", updateChartFilters);
-//     regionFilter.addEventListener("change", updateChartFilters);
+    const sortedLabels = Object.keys(profitData).sort((a, b) => {
+      const [monthA, yearA] = a.split(" ");
+      const [monthB, yearB] = b.split(" ");
+      return (
+        new Date(`${monthA} 01, ${yearA}`) - new Date(`${monthB} 01, ${yearB}`)
+      );
+    });
 
-//     // Initialize chart with all years (2014-2017) and all regions
-//     updateChart(data, "All Year", "All Regions");
-//   });
-// });
+    const totalProfit = sortedLabels.map((label) => profitData[label]);
+    const totalSales = sortedLabels.map((label) => salesData[label]);
 
-// document.addEventListener("DOMContentLoaded", (event) => {
-//   let chart; // To hold the chart instance
-//   let data = []; // Global variable to hold fetched data
+    const filteredLabels = sortedLabels.filter(
+      (label) =>
+        label.startsWith("Jan") ||
+        label.startsWith("Mar") ||
+        label.startsWith("Jul") ||
+        label.startsWith("Oct")
+    );
 
-//   function fetchDataAndInitialize() {
-//     fetch("data/SUPERSTORE-TEAM15.json") // Update the path to your JSON file as needed
-//       .then((response) => response.json())
-//       .then((fetchedData) => {
-//         data = fetchedData;
-//         updateChart();
-//       })
-//       .catch((error) => console.error("Error fetching the data:", error));
-//   }
+    const averageProfit =
+      totalProfit.reduce((a, b) => a + b, 0) / totalProfit.length;
+    const averageSales =
+      totalSales.reduce((a, b) => a + b, 0) / totalSales.length;
 
-//   function getQuarter(month) {
-//     return Math.floor((month - 1) / 3) + 1;
-//   }
+    const ctx = document.getElementById("myChart").getContext("2d");
+    const myChart = new Chart(ctx, {
+      type: "line",
+      data: {
+        labels: sortedLabels,
+        datasets: [
+          {
+            label: "Total Profit",
+            data: totalProfit,
+            borderColor: "rgba(255, 159, 64, 1)",
+            backgroundColor: "rgba(255, 159, 64, 0.2)",
+            fill: false,
+          },
+          {
+            label: "Total Sales",
+            data: totalSales,
+            borderColor: "rgba(75, 192, 192, 1)",
+            backgroundColor: "rgba(75, 192, 192, 0.2)",
+            fill: false,
+          },
+          {
+            label: "Average Profit",
+            data: new Array(sortedLabels.length).fill(averageProfit),
+            borderColor: "rgba(255, 159, 64, 0.5)",
+            borderWidth: 2,
+            borderDash: [5, 5],
+            pointRadius: 0,
+          },
+          {
+            label: "Average Sales",
+            data: new Array(sortedLabels.length).fill(averageSales),
+            borderColor: "rgba(75, 192, 192, 0.5)",
+            borderWidth: 2,
+            borderDash: [5, 5],
+            pointRadius: 0,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          title: {
+            display: true,
+            text: "Profit and Sales",
+          },
+          tooltip: {
+            callbacks: {
+              label: function (tooltipItem) {
+                return `${
+                  tooltipItem.dataset.label
+                }: ${tooltipItem.raw.toLocaleString()}`;
+              },
+            },
+          },
+        },
+        scales: {
+          x: {
+            title: {
+              display: true,
+            },
+            // ticks: {
+            //   callback: function (value, index, ticks) {
+            //     if (filteredLabels.includes(this.getLabelForValue(value))) {
+            //       return this.getLabelForValue(value);
+            //     } else {
+            //       return "";
+            //     }
+            //   },
+            // },
+          },
+          y: {
+            title: {
+              display: true,
+              text: "Amount",
+            },
+            ticks: {
+              callback: function (value) {
+                return `${value / 1000000} jt`; // Convert to 'jt'
+              },
+            },
+          },
+        },
+      },
+    });
 
-//   function updateChart() {
-//     const yearFilter = document.getElementById("yearFilter").value;
-//     const regionFilter = document.getElementById("regionFilter").value;
+    const updateSalesAndProfit = (selectedYear, selectedRegion) => {
+      let filteredData = data;
 
-//     let filteredData = data;
+      // Filter by year
+      if (selectedYear !== "All Year") {
+        filteredData = filteredData.filter(
+          (item) => item.Year_Separated === selectedYear
+        );
+      }
 
-//     if (yearFilter && yearFilter !== "All Year") {
-//       filteredData = filteredData.filter(
-//         (item) => item.Year_Separated === yearFilter
-//       );
-//     }
+      // Filter by region
+      if (selectedRegion !== "All Regions") {
+        filteredData = filteredData.filter(
+          (item) => item.Region === selectedRegion
+        );
+      }
 
-//     if (regionFilter && regionFilter !== "All Regions") {
-//       filteredData = filteredData.filter(
-//         (item) => item.Region === regionFilter
-//       );
-//     }
+      // Calculate total profit and total sales for filtered data
+      const totalProfitValue = filteredData.reduce(
+        (sum, item) => sum + parseFloat(item.Profit),
+        0
+      );
+      const totalSalesValue = filteredData.reduce(
+        (sum, item) => sum + parseFloat(item.Sales),
+        0
+      );
 
-//     const quarterlyData = {};
+      // Update total profit and total sales in the document
+      document.getElementById("totalProfit").textContent =
+        "$" + totalProfitValue.toLocaleString("en-US");
+      document.getElementById("totalSales").textContent =
+        "$" + totalSalesValue.toLocaleString("en-US");
 
-//     filteredData.forEach((item) => {
-//       const orderDate = new Date(item.Order_Date);
-//       const quarter = getQuarter(orderDate.getMonth() + 1);
-//       const year = orderDate.getFullYear();
-//       const key = `${year} Q${quarter}`;
+      // Update the chart data
+      const filteredProfitData = {};
+      const filteredSalesData = {};
 
-//       if (!quarterlyData[key]) {
-//         quarterlyData[key] = { sales: 0, profit: 0 };
-//       }
-//       quarterlyData[key].sales += parseFloat(item.Sales);
-//       quarterlyData[key].profit += parseFloat(item.Profit);
-//     });
+      filteredData.forEach((order) => {
+        const year = order.Year_Separated;
+        const month = order.Month_Separated;
+        const monthYear = `${monthMapping[month]} ${year}`;
 
-//     const labels = Object.keys(quarterlyData).sort();
-//     const salesData = labels.map((label) => quarterlyData[label].sales);
-//     const profitData = labels.map((label) => quarterlyData[label].profit);
+        if (!filteredProfitData[monthYear]) {
+          filteredProfitData[monthYear] = 0;
+          filteredSalesData[monthYear] = 0;
+        }
+        filteredProfitData[monthYear] += order.Profit;
+        filteredSalesData[monthYear] += order.Sales;
+      });
 
-//     const ctx = document.getElementById("quarterChart").getContext("2d");
+      const filteredSortedLabels = Object.keys(filteredProfitData).sort(
+        (a, b) => {
+          const [monthA, yearA] = a.split(" ");
+          const [monthB, yearB] = b.split(" ");
+          return (
+            new Date(`${monthA} 01, ${yearA}`) -
+            new Date(`${monthB} 01, ${yearB}`)
+          );
+        }
+      );
 
-//     if (chart) {
-//       chart.destroy(); // Destroy the previous chart instance if it exists
-//     }
+      const filteredTotalProfit = filteredSortedLabels.map(
+        (label) => filteredProfitData[label]
+      );
+      const filteredTotalSales = filteredSortedLabels.map(
+        (label) => filteredSalesData[label]
+      );
 
-//     chart = new Chart(ctx, {
-//       type: "line",
-//       data: {
-//         labels: labels,
-//         datasets: [
-//           {
-//             label: "Sales",
-//             data: salesData,
-//             borderColor: "orange",
-//             fill: false,
-//           },
-//           {
-//             label: "Profit",
-//             data: profitData,
-//             borderColor: "green",
-//             fill: false,
-//           },
-//         ],
-//       },
-//       options: {
-//         scales: {
-//           y: {
-//             beginAtZero: true,
-//             title: {
-//               display: true,
-//               text: "Amount",
-//             },
-//           },
-//           x: {
-//             title: {
-//               display: true,
-//               text: "Quarter",
-//             },
-//           },
-//         },
-//         plugins: {
-//           title: {
-//             display: true,
-//             text: "Profit and Sales Per Quarter",
-//           },
-//           tooltip: {
-//             mode: "index",
-//             intersect: false,
-//           },
-//         },
-//         responsive: true,
-//         maintainAspectRatio: false,
-//       },
-//     });
-//   }
+      myChart.data.labels = filteredSortedLabels;
+      myChart.data.datasets[0].data = filteredTotalProfit;
+      myChart.data.datasets[1].data = filteredTotalSales;
+      myChart.data.datasets[2].data = new Array(
+        filteredSortedLabels.length
+      ).fill(
+        filteredTotalProfit.reduce((a, b) => a + b, 0) /
+          filteredTotalProfit.length
+      );
+      myChart.data.datasets[3].data = new Array(
+        filteredSortedLabels.length
+      ).fill(
+        filteredTotalSales.reduce((a, b) => a + b, 0) /
+          filteredTotalSales.length
+      );
 
-//   document.getElementById("yearFilter").addEventListener("change", updateChart);
-//   document
-//     .getElementById("regionFilter")
-//     .addEventListener("change", updateChart);
+      myChart.update();
+    };
 
-//   fetchDataAndInitialize();
-// });
+    const yearFilter = document.getElementById("yearFilter");
+    const regionFilter = document.getElementById("regionFilter");
 
-// document.addEventListener("DOMContentLoaded", (event) => {
-//   let chart; // To hold the chart instance
-//   let data = []; // Global variable to hold fetched data
+    // Add event listeners to both filters
+    yearFilter.addEventListener("change", function () {
+      const selectedYear = this.value;
+      const selectedRegion = regionFilter.value;
+      updateSalesAndProfit(selectedYear, selectedRegion);
+    });
 
-//   function fetchDataAndInitialize() {
-//     fetch("data/SUPERSTORE-TEAM15.json") // Update the path to your JSON file as needed
-//       .then((response) => response.json())
-//       .then((fetchedData) => {
-//         data = fetchedData;
-//         updateChart();
-//       })
-//       .catch((error) => console.error("Error fetching the data:", error));
-//   }
+    regionFilter.addEventListener("change", function () {
+      const selectedYear = yearFilter.value;
+      const selectedRegion = this.value;
+      updateSalesAndProfit(selectedYear, selectedRegion);
+    });
 
-//   function getQuarter(month) {
-//     return Math.floor((month - 1) / 3) + 1;
-//   }
-
-//   function calculateAverage(arr) {
-//     const sum = arr.reduce((a, b) => a + b, 0);
-//     return sum / arr.length;
-//   }
-
-//   function updateChart() {
-//     const yearFilter = document.getElementById("yearFilter").value;
-//     const regionFilter = document.getElementById("regionFilter").value;
-
-//     let filteredData = data;
-
-//     if (yearFilter && yearFilter !== "All Year") {
-//       filteredData = filteredData.filter(
-//         (item) => item.Year_Separated === yearFilter
-//       );
-//     }
-
-//     if (regionFilter && regionFilter !== "All Regions") {
-//       filteredData = filteredData.filter(
-//         (item) => item.Region === regionFilter
-//       );
-//     }
-
-//     const quarterlyData = {};
-
-//     filteredData.forEach((item) => {
-//       const orderDate = new Date(item.Order_Date);
-//       const quarter = getQuarter(orderDate.getMonth() + 1);
-//       const year = orderDate.getFullYear();
-//       const key = `${year} Q${quarter}`;
-
-//       if (!quarterlyData[key]) {
-//         quarterlyData[key] = { sales: 0, profit: 0 };
-//       }
-//       quarterlyData[key].sales += parseFloat(item.Sales);
-//       quarterlyData[key].profit += parseFloat(item.Profit);
-//     });
-
-//     const labels = Object.keys(quarterlyData).sort();
-//     const salesData = labels.map((label) => quarterlyData[label].sales);
-//     const profitData = labels.map((label) => quarterlyData[label].profit);
-//     const avgSales = calculateAverage(salesData);
-//     const avgProfit = calculateAverage(profitData);
-
-//     const ctx = document.getElementById("quarterChart").getContext("2d");
-
-//     if (chart) {
-//       chart.destroy(); // Destroy the previous chart instance if it exists
-//     }
-
-//     chart = new Chart(ctx, {
-//       type: "line",
-//       data: {
-//         labels: labels,
-//         datasets: [
-//           {
-//             label: "Sales",
-//             data: salesData,
-//             borderColor: "orange",
-//             fill: false,
-//           },
-//           {
-//             label: "Profit",
-//             data: profitData,
-//             borderColor: "green",
-//             fill: false,
-//           },
-//         ],
-//       },
-//       options: {
-//         scales: {
-//           y: {
-//             beginAtZero: true,
-//             title: {
-//               display: true,
-//               text: "Amount",
-//             },
-//           },
-//           x: {
-//             title: {
-//               display: true,
-//               text: "Quarter",
-//             },
-//           },
-//         },
-//         plugins: {
-//           title: {
-//             display: true,
-//             text: "Profit and Sales Per Quarter",
-//           },
-//           tooltip: {
-//             mode: "index",
-//             intersect: false,
-//           },
-//           annotation: {
-//             annotations: [
-//               {
-//                 type: "line",
-//                 scaleID: "y",
-//                 value: avgSales,
-//                 borderColor: "orange",
-//                 borderWidth: 2,
-//                 label: {
-//                   enabled: true,
-//                   content: "Average Sales",
-//                   position: "center",
-//                   backgroundColor: "rgba(255,165,0,0.8)",
-//                   color: "white",
-//                 },
-//               },
-//               {
-//                 type: "line",
-//                 scaleID: "y",
-//                 value: avgProfit,
-//                 borderColor: "green",
-//                 borderWidth: 2,
-//                 label: {
-//                   enabled: true,
-//                   content: "Average Profit",
-//                   position: "center",
-//                   backgroundColor: "rgba(0,128,0,0.8)",
-//                   color: "white",
-//                 },
-//               },
-//             ],
-//           },
-//         },
-//         responsive: true,
-//         maintainAspectRatio: false,
-//       },
-//     });
-//   }
-
-//   document.getElementById("yearFilter").addEventListener("change", updateChart);
-//   document
-//     .getElementById("regionFilter")
-//     .addEventListener("change", updateChart);
-
-//   fetchDataAndInitialize();
-// });
-
-// document.addEventListener("DOMContentLoaded", (event) => {
-//   let chart; // To hold the chart instance
-//   let data = []; // Global variable to hold fetched data
-
-//   function fetchDataAndInitialize() {
-//     fetch("data/SUPERSTORE-TEAM15.json") // Update the path to your JSON file as needed
-//       .then((response) => response.json())
-//       .then((fetchedData) => {
-//         data = fetchedData;
-//         updateChart();
-//       })
-//       .catch((error) => console.error("Error fetching the data:", error));
-//   }
-
-//   function getQuarter(month) {
-//     return Math.floor((month - 1) / 3) + 1;
-//   }
-
-//   function calculateAverage(arr) {
-//     const sum = arr.reduce((a, b) => a + b, 0);
-//     return sum / arr.length;
-//   }
-
-//   function updateChart() {
-//     const yearFilter = document.getElementById("yearFilter").value;
-//     const regionFilter = document.getElementById("regionFilter").value;
-
-//     let filteredData = data;
-
-//     if (yearFilter && yearFilter !== "All Year") {
-//       filteredData = filteredData.filter(
-//         (item) => item.Year_Separated === yearFilter
-//       );
-//     }
-
-//     if (regionFilter && regionFilter !== "All Regions") {
-//       filteredData = filteredData.filter(
-//         (item) => item.Region === regionFilter
-//       );
-//     }
-
-//     const quarterlyData = {};
-
-//     filteredData.forEach((item) => {
-//       const orderDate = new Date(item.Order_Date);
-//       const quarter = getQuarter(orderDate.getMonth() + 1);
-//       const year = orderDate.getFullYear();
-//       const key = `${year} Q${quarter}`;
-
-//       if (!quarterlyData[key]) {
-//         quarterlyData[key] = { sales: 0, profit: 0 };
-//       }
-//       quarterlyData[key].sales += parseFloat(item.Sales);
-//       quarterlyData[key].profit += parseFloat(item.Profit);
-//     });
-
-//     const labels = Object.keys(quarterlyData).sort();
-//     const salesData = labels.map((label) => quarterlyData[label].sales);
-//     const profitData = labels.map((label) => quarterlyData[label].profit);
-//     const avgSales = calculateAverage(salesData);
-//     const avgProfit = calculateAverage(profitData);
-
-//     const ctx = document.getElementById("quarterChart").getContext("2d");
-
-//     if (chart) {
-//       chart.destroy(); // Destroy the previous chart instance if it exists
-//     }
-
-//     chart = new Chart(ctx, {
-//       type: "line",
-//       data: {
-//         labels: labels,
-//         datasets: [
-//           {
-//             label: "Sales",
-//             data: salesData,
-//             borderColor: "orange",
-//             fill: false,
-//           },
-//           {
-//             label: "Profit",
-//             data: profitData,
-//             borderColor: "green",
-//             fill: false,
-//           },
-//         ],
-//       },
-//       options: {
-//         scales: {
-//           y: {
-//             beginAtZero: true,
-//             title: {
-//               display: true,
-//               text: "Amount",
-//             },
-//           },
-//           x: {
-//             title: {
-//               display: true,
-//               text: "Quarter",
-//             },
-//           },
-//         },
-//         plugins: {
-//           title: {
-//             display: true,
-//             text: "Profit and Sales Per Quarter",
-//           },
-//           tooltip: {
-//             mode: "index",
-//             intersect: false,
-//           },
-//           annotation: {
-//             annotations: [
-//               {
-//                 type: "line",
-//                 scaleID: "y",
-//                 value: avgSales,
-//                 borderColor: "orange",
-//                 borderWidth: 2,
-//                 label: {
-//                   enabled: true,
-//                   content: "Average Sales",
-//                   position: "center",
-//                   backgroundColor: "rgba(255,165,0,0.8)",
-//                   color: "white",
-//                 },
-//               },
-//               {
-//                 type: "line",
-//                 scaleID: "y",
-//                 value: avgProfit,
-//                 borderColor: "green",
-//                 borderWidth: 2,
-//                 label: {
-//                   enabled: true,
-//                   content: "Average Profit",
-//                   position: "center",
-//                   backgroundColor: "rgba(0,128,0,0.8)",
-//                   color: "white",
-//                 },
-//               },
-//             ],
-//           },
-//         },
-//         responsive: true,
-//         maintainAspectRatio: false,
-//       },
-//     });
-//   }
-
-//   document.getElementById("yearFilter").addEventListener("change", updateChart);
-//   document
-//     .getElementById("regionFilter")
-//     .addEventListener("change", updateChart);
-
-//   fetchDataAndInitialize();
-// });
+    // initial call to updateSalesAndProfit with default values
+    updateSalesAndProfit("All Year", "All Regions");
+  })
+  .catch((error) => console.error("Error fetching data:", error));
